@@ -32,4 +32,13 @@ public class MemberService {
     public void deleteMemberByID(Long idUser) {
         memberRepository.deleteById(idUser);
     }
+
+    public Member update(Long idUser, Member newMemberData) {
+        Member originalMember = memberRepository.findById(idUser).get();
+        originalMember.setChannelID(newMemberData.getChannelID());
+        originalMember.setIdUser(newMemberData.getIdUser());
+        originalMember.setCreatedAt(newMemberData.getCreatedAt());
+        originalMember.setUpdatedAt(newMemberData.getUpdatedAt());
+        return memberRepository.save(originalMember);
+    }
 }

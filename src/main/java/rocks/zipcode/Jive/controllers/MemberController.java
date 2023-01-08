@@ -41,7 +41,7 @@ public class MemberController {
      @PutMapping("/{idUser}")
      public ResponseEntity<Member> update(@RequestBody Member member, @PathVariable Long idUser){
         try {
-            memberService.saveMember(member);
+            memberService.update(idUser, member);
             return new ResponseEntity<Member>(member, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Member>(HttpStatus.NOT_FOUND);
