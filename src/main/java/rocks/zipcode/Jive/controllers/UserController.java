@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rocks.zipcode.Jive.entities.User;
+import rocks.zipcode.Jive.entities.UserEntity;
 import rocks.zipcode.Jive.services.UserService;
 
 import java.util.List;
@@ -19,41 +19,40 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/add")
-    public String addUser(@RequestBody User user) {
-       userService.saveUser(user);
-       return "User has been saved";
+    public String addUser(@RequestBody UserEntity user) {
+        userService.saveUser(user);
+        return "User has been saved";
     }
 
-
     @GetMapping("/all")
-    public List<User> getAllUsers(){
+    public List<UserEntity> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{idUser}")
-    public ResponseEntity<User> getUserById(@PathVariable Long idUser) {
+    @GetMapping("/{id}")
+    public ResponseEntity<UserEntity> getUserById(@PathVariable Long id) {
         try {
-            User user = userService.getUserById(idUser);
-            return new ResponseEntity<User>(user, HttpStatus.OK);
+            UserEntity user = userService.getUserById(id);
+            return new ResponseEntity<UserEntity>(user, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @PutMapping("/{idUser}")
-    public ResponseEntity<User> update(@RequestBody User user, @PathVariable Long idUser) {
+    @PutMapping("/{id}")
+    public ResponseEntity<UserEntity> update(@RequestBody UserEntity user, @PathVariable Long id) {
         try {
-            userService.saveUser(user); //why no id?
-            return new ResponseEntity<User>(user, HttpStatus.OK);
+            userService.saveUser(user); // why no id?
+            return new ResponseEntity<UserEntity>(user, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/{idUser}")
-    public String delete(@PathVariable Long idUser) {
-        userService.deleteUserById(idUser);
-        return "User " + idUser + " has been deleted.";
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        userService.deleteUserById(id);
+        return "User " + id + " has been deleted.";
     }
 
 }

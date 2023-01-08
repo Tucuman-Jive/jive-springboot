@@ -2,7 +2,7 @@ package rocks.zipcode.Jive.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rocks.zipcode.Jive.entities.User;
+import rocks.zipcode.Jive.entities.UserEntity;
 import rocks.zipcode.Jive.repositories.UserRepository;
 
 import java.util.List;
@@ -16,19 +16,19 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUsers(){
+    public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long idUser) {
-        return userRepository.findById(idUser).get();
+    public UserEntity getUserById(Long id) {
+        return userRepository.findById(id).get();
     }
 
-    public void saveUser(User user) {
+    public void saveUser(UserEntity user) {
         userRepository.save(user);
     }
 
-    public void deleteUserById(Long idUser) {
-        userRepository.deleteById(idUser);
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
     }
 }
