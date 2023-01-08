@@ -45,7 +45,7 @@ public class ChannelController {
     @PutMapping("/{idChannel}")
     public ResponseEntity<Channel> update(@RequestBody Channel channel, @PathVariable Long idChannel) {
         try {
-            channelService.saveChannel(channel);
+            channelService.update(idChannel, channel);
             return new ResponseEntity<Channel>(channel, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Channel>(HttpStatus.NOT_FOUND);

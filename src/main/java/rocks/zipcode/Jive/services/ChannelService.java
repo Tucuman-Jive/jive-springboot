@@ -33,6 +33,14 @@ public class ChannelService{
         channelRepository.deleteById(idChannel);
     }
 
-
+    public Channel update(Long id, Channel newChannelData){
+        Channel originalChannel = channelRepository.findById(id).get();
+        originalChannel.setName(newChannelData.getName());
+        originalChannel.setDescription(newChannelData.getDescription());
+        originalChannel.setIdChannel(newChannelData.getIdChannel());
+        originalChannel.setCreatedAt(newChannelData.getCreatedAt());
+        originalChannel.setUpdatedAt(newChannelData.getUpdatedAt());
+        return channelRepository.save(originalChannel);
+    }
 
 }
