@@ -28,7 +28,7 @@ public class MemberController {
         return memberService.getAllMembers();
     }
 
-    @GetMapping("/(idUser)")
+    @GetMapping("/{idUser}")
     public ResponseEntity<Member> getMemberByID(@PathVariable Long idUser){
         try {
             Member member = memberService.getMemberByID(idUser);
@@ -38,7 +38,7 @@ public class MemberController {
         }
      }
 
-     @PutMapping("/(idUser)")
+     @PutMapping("/{idUser}")
      public ResponseEntity<Member> update(@RequestBody Member member, @PathVariable Long idUser){
         try {
             memberService.saveMember(member);
@@ -50,7 +50,7 @@ public class MemberController {
 
 
 
-     @DeleteMapping("/(idUser)")
+     @DeleteMapping("/{idUser}")
      public String delete(@PathVariable Long idUser) {
         memberService.deleteMemberByID(idUser);
         return "Member " + idUser + "has been deleted";
