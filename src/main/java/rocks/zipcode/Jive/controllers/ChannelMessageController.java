@@ -41,7 +41,7 @@ public class ChannelMessageController {
     @PutMapping("/{id}")
     public ResponseEntity<ChannelMessage> update(@RequestBody ChannelMessage channelMessage, @PathVariable Long id) {
         try {
-            channelMessageService.saveChannelMessage(channelMessage); // why no id?
+            channelMessageService.update(id ,channelMessage); // why no id?
             return new ResponseEntity<ChannelMessage>(channelMessage, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<ChannelMessage>(HttpStatus.NOT_FOUND);

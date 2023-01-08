@@ -42,7 +42,7 @@ public class DirectMessageController {
     @PutMapping("/{id}")
     public ResponseEntity<DirectMessage> updateDirectMessage(@RequestBody DirectMessage directMessage, @PathVariable Long id){
         try {
-            directMessageService.saveDirectMessage(directMessage);
+            directMessageService.update(id, directMessage);
             return new ResponseEntity<DirectMessage>(directMessage, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<DirectMessage>(HttpStatus.NOT_FOUND);

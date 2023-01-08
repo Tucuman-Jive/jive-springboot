@@ -2,6 +2,7 @@ package rocks.zipcode.Jive.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rocks.zipcode.Jive.entities.Channel;
 import rocks.zipcode.Jive.entities.ChannelMessage;
 import rocks.zipcode.Jive.repositories.ChannelMessageRepository;
 
@@ -34,5 +35,12 @@ public class ChannelMessageService {
         channelMessageRepository.deleteById(idChannelMessage);
     }
 
-
+    public ChannelMessage update(Long id, ChannelMessage newChannelMessageData){
+        ChannelMessage originalChannelMessage = channelMessageRepository.findById(id).get();
+        originalChannelMessage.setIdChannelMessage(newChannelMessageData.getIdChannelMessage());
+        originalChannelMessage.setIdUser(newChannelMessageData.getIdUser());
+        originalChannelMessage.setIdChannel(newChannelMessageData.getIdChannel());
+        originalChannelMessage.setMessage(newChannelMessageData.getMessage());
+        return channelMessageRepository.save(originalChannelMessage);
+    }
 }
