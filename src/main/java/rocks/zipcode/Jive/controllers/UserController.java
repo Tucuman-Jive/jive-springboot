@@ -42,7 +42,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserEntity> update(@RequestBody UserEntity user, @PathVariable Long id) {
         try {
-            userService.saveUser(user); // why no id?
+            userService.update(id, user); // why no id?
             return new ResponseEntity<UserEntity>(user, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<UserEntity>(HttpStatus.NOT_FOUND);
