@@ -1,6 +1,5 @@
 package rocks.zipcode.Jive.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/channel-messages")
+@RequestMapping("/channelmessages")
 public class ChannelMessageController {
     @Autowired
     ChannelMessageService channelMessageService;
@@ -25,33 +24,33 @@ public class ChannelMessageController {
     }
 
     @GetMapping("/all")
-    public List<ChannelMessage> getAllChannelMessages(){
+    public List<ChannelMessage> getAllChannelMessages() {
         return channelMessageService.getAllChannelMessages();
     }
 
-    @GetMapping("/{idChannelMessage}")
-    public ResponseEntity<ChannelMessage> getChannelMessageById(@PathVariable Long idChannelMessage) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ChannelMessage> getChannelMessageById(@PathVariable Long id) {
         try {
-            ChannelMessage channelMessage = channelMessageService.getChannelMessageById(idChannelMessage);
+            ChannelMessage channelMessage = channelMessageService.getChannelMessageById(id);
             return new ResponseEntity<>(channelMessage, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @PutMapping("/{idUser}")
-    public ResponseEntity<ChannelMessage> update(@RequestBody ChannelMessage channelMessage, @PathVariable Long idChannelMessage) {
+    @PutMapping("/{id}")
+    public ResponseEntity<ChannelMessage> update(@RequestBody ChannelMessage channelMessage, @PathVariable Long id) {
         try {
-            channelMessageService.saveChannelMessage(channelMessage); //why no id?
+            channelMessageService.saveChannelMessage(channelMessage); // why no id?
             return new ResponseEntity<ChannelMessage>(channelMessage, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<ChannelMessage>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/{idChannelMessage}")
-    public String delete(@PathVariable Long idChannelMessage) {
-        channelMessageService.deleteChannelMessageById(idChannelMessage);
-        return "Channel Message " + idChannelMessage + " has been deleted.";
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        channelMessageService.deleteChannelMessageById(id);
+        return "Channel Message " + id + " has been deleted.";
     }
 }
