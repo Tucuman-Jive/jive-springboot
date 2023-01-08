@@ -20,7 +20,7 @@ public class ThreadDirectMessageController {
     @PostMapping("/add")
     public String addDirectMessage(@RequestBody ThreadDirectMessage threadDirectMessage) {
         threadDirectMessageService.saveThreadDirectMessage(threadDirectMessage);
-        return "Direct message has been saved";
+        return "Thread has been saved";
     }
 
     @GetMapping("/all")
@@ -52,6 +52,6 @@ public class ThreadDirectMessageController {
     @DeleteMapping("/{id}")
     public String deleteThreadDirectMessage(@PathVariable Long id) {
         threadDirectMessageService.deleteThreadDirectMessageById(id);
-        return "Direct Message " + id + " has been deleted.";
+        return "Thread " + id + " has been deleted.";
     }
 }

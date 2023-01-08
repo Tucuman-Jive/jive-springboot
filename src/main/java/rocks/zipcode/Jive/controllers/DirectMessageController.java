@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("/dms")
 public class DirectMessageController {
     @Autowired
-    private DirectMessageService directMessageService;
+    DirectMessageService directMessageService;
 
     @PostMapping("/add")
     public String addDirectMessage(@RequestBody DirectMessage directMessage) {
