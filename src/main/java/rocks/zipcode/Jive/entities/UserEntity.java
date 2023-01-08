@@ -1,18 +1,22 @@
 package rocks.zipcode.Jive.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-public class User {
+public class UserEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
+
     private String userName;
     private String password;
 
-    public User() {
+    public UserEntity() {
     }
-
 
     public Long getIdUser() {
         return idUser;
