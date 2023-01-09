@@ -37,7 +37,7 @@ public class ChannelService{
         Channel originalChannel = channelRepository.findById(id).get();
         originalChannel.setName(newChannelData.getName());
         originalChannel.setDescription(newChannelData.getDescription());
-        originalChannel.setIdChannel(newChannelData.getIdChannel());
+        originalChannel.setId(newChannelData.getId());
         originalChannel.setCreatedAt(newChannelData.getCreatedAt());
         originalChannel.setUpdatedAt(newChannelData.getUpdatedAt());
         return channelRepository.save(originalChannel);

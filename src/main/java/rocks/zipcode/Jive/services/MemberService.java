@@ -2,8 +2,10 @@ package rocks.zipcode.Jive.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rocks.zipcode.Jive.entities.Member;
+import rocks.zipcode.Jive.entities.Membership;
+import rocks.zipcode.Jive.entities.UserEntity;
 import rocks.zipcode.Jive.repositories.MemberRepository;
+import rocks.zipcode.Jive.repositories.UserRepository;
 
 import java.util.List;
 
@@ -11,34 +13,66 @@ import java.util.List;
 public class MemberService {
     @Autowired
     MemberRepository memberRepository;
+    @Autowired
+    UserRepository userRepository;
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
-    public List<Member> getAllMembers() {
+    public List<Membership> getAllMembers() {
         return memberRepository.findAll();
     }
 
-    public Member getMemberByID(Long idUser) {
-        return memberRepository.findById(idUser).get();
+    public Membership getMemberByID(Long id) {
+        return memberRepository.findById(id).get();
 
     }
 
-    public void saveMember(Member member) {
+    public void saveMember(Membership member) {
         memberRepository.save(member);
     }
 
-    public void deleteMemberByID(Long idUser) {
-        memberRepository.deleteById(idUser);
+    public void deleteMemberByID(Long id) {
+        memberRepository.deleteById(id);
     }
 
-    public Member update(Long idUser, Member newMemberData) {
-        Member originalMember = memberRepository.findById(idUser).get();
-        originalMember.setChannelID(newMemberData.getChannelID());
-        originalMember.setIdUser(newMemberData.getIdUser());
-        originalMember.setCreatedAt(newMemberData.getCreatedAt());
-        originalMember.setUpdatedAt(newMemberData.getUpdatedAt());
+    public Membership update(Long id, Membership newMemberData) {
+        Membership originalMember = memberRepository.findById(id).get();
+        originalMember.setChannel(newMemberData.getChannel());
+
+        // originalMember.setIdUser(newMemberData.getIdUser());
+        // originalMember.setCreatedAt(newMemberData.getCreatedAt());
+        // originalMember.setUpdatedAt(newMemberData.getUpdatedAt());
         return memberRepository.save(originalMember);
+    }
+
+    // Todo changed this
+
+    // public Member assignUserToMembership(Long memberId, Long userId) { // assign
+    // new membership
+    // Member member = memberRepository.findById(memberId).get();
+    // UserEntity userEntity = userRepository.findById(userId).get();
+    // member.setUserEntity(userEntity);
+    // return memberRepository.save(member);
+    // }
+    // user 1
+    // membership 1
+    // channel id: 1
+    // user: 1
+
+    // user 2
+    // membership 2
+    // channel id: 1
+    // user: 2
+
+    // membership 3
+    // channel id: 2
+    // user: 2
+
+    public Membership assignUserToMembership(Membership member, Long userId) { // assign new membership
+        UserEntity userEntity = userRepository.findById(userId).get();
+        member.setUserEntity(userEntity);
+        return memberRepository.save(member);
     }
 }
