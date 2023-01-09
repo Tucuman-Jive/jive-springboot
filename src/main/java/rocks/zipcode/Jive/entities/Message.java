@@ -1,6 +1,5 @@
 package rocks.zipcode.Jive.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,25 +8,47 @@ import jakarta.persistence.*;
 import java.security.Timestamp;
 
 @Entity
-public class ChannelMessage {
+public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idChannelMessage;
+    private Long id;
     private Long idUser;
     private Long idChannel;
     private String message;
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    private Timestamp createdAt; //set value in service
+
+    @ManyToOne
+    @JoinColumn(name = "channel_id_channel")
+    private Channel channel;
+
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
 //    private Timestamp createdAt;
 //    private Timestamp updatedAt;
 
-    public ChannelMessage() {
+    public Message() {
     }
 
-    public Long getIdChannelMessage() {
-        return idChannelMessage;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdChannelMessage(Long idChannelMessage) {
-        this.idChannelMessage = idChannelMessage;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getIdUser() {

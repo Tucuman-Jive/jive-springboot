@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rocks.zipcode.Jive.entities.ChannelMessage;
+import rocks.zipcode.Jive.entities.Message;
 import rocks.zipcode.Jive.services.ChannelMessageService;
 
 import java.util.List;
@@ -18,33 +18,33 @@ public class ChannelMessageController {
     ChannelMessageService channelMessageService;
 
     @PostMapping("/add")
-    public String addChannelMessage(@RequestBody ChannelMessage channelMessage) {
-        channelMessageService.saveChannelMessage(channelMessage);
+    public String addChannelMessage(@RequestBody Message message) {
+        channelMessageService.saveChannelMessage(message);
         return "Channel message has been saved";
     }
 
     @GetMapping("/all")
-    public List<ChannelMessage> getAllChannelMessages() {
+    public List<Message> getAllChannelMessages() {
         return channelMessageService.getAllChannelMessages();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ChannelMessage> getChannelMessageById(@PathVariable Long id) {
+    public ResponseEntity<Message> getChannelMessageById(@PathVariable Long id) {
         try {
-            ChannelMessage channelMessage = channelMessageService.getChannelMessageById(id);
-            return new ResponseEntity<>(channelMessage, HttpStatus.OK);
+            Message message = channelMessageService.getChannelMessageById(id);
+            return new ResponseEntity<>(message, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ChannelMessage> update(@RequestBody ChannelMessage channelMessage, @PathVariable Long id) {
+    public ResponseEntity<Message> update(@RequestBody Message message, @PathVariable Long id) {
         try {
-            channelMessageService.update(id ,channelMessage); // why no id?
-            return new ResponseEntity<ChannelMessage>(channelMessage, HttpStatus.OK);
+            channelMessageService.update(id , message); // why no id?
+            return new ResponseEntity<Message>(message, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<ChannelMessage>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Message>(HttpStatus.NOT_FOUND);
         }
     }
 

@@ -1,33 +1,46 @@
 package rocks.zipcode.Jive.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Channel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idChannel;
+    private Long id;
     private String name;
     private String description;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
+    // TODO changed this
+    @JsonIgnore
+    @OneToMany(mappedBy = "channel")
+    private Set<Message> messages = new HashSet<>();
 
     public Channel() {
     }
 
-    public Long getIdChannel() {
-        return idChannel;
+    //TODO CHANGED THIS
+    public Set<Message> getMessages() {
+        return messages;
     }
 
-    public void setIdChannel(Long idChannel) {
-        this.idChannel = idChannel;
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

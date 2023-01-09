@@ -1,29 +1,47 @@
 package rocks.zipcode.Jive.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "userEntity")
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
-
+    private Long id;
     private String userName;
     private String password;
+
+    // TODO changed this
+    @JsonIgnore
+    // @OneToMany(mappedBy = "userEntity")
+    @OneToMany
+    private Set<Membership> memberships = new HashSet<>();
+    // private List<Member> memberships = new ArrayList<>();
 
     public UserEntity() {
     }
 
-    public Long getIdUser() {
-        return idUser;
+    // TODO changed this
+    public Set<Membership> getMemberships() {
+        return memberships;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    // TODO changed this
+    public void setMemberships(Set<Membership> memberships) {
+        this.memberships = memberships;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUserName() {
