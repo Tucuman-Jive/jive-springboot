@@ -44,7 +44,7 @@ public class MemberService {
     public Membership update(Long id, Membership newMemberData) {
         Membership originalMember = memberRepository.findById(id).get();
         originalMember.setChannel(newMemberData.getChannel());
-
+        originalMember.setUserEntity(newMemberData.getUserEntity());
         // originalMember.setIdUser(newMemberData.getIdUser());
         // originalMember.setCreatedAt(newMemberData.getCreatedAt());
         // originalMember.setUpdatedAt(newMemberData.getUpdatedAt());

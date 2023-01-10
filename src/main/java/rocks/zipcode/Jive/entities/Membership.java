@@ -12,8 +12,7 @@ public class Membership {
     @ManyToOne
     @JoinColumn(name = "channel_id_channel")
     private Channel channel;
-    // private Long idUser;
-    // private Long channelID;
+
     // private Timestamp updatedAt; //TOOK OUT!!!!
     // private Timestamp createdAt;
 
@@ -44,22 +43,6 @@ public class Membership {
     public void setId(Long id) {
         this.id = id;
     }
-
-    // public Long getIdUser() {
-    // return idUser;
-    // }
-
-    // public void setIdUser(Long idUser) {
-    // this.idUser = idUser;
-    // }
-
-//    public Long getChannelID() {
-//        return channel.getId();
-//    }
-//
-//    public void setChannelID(Channel channel) {
-//        setChannel(channel);
-//    }
 
     public Channel getChannel() {
         return channel;
