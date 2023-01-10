@@ -41,7 +41,7 @@ public class MessageController {
     @PutMapping("/{id}")
     public ResponseEntity<Message> update(@RequestBody Message message, @PathVariable Long id) {
         try {
-            messageService.update(id , message); // why no id?
+            messageService.update(id, message); // why no id?
             return new ResponseEntity<Message>(message, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<Message>(HttpStatus.NOT_FOUND);
@@ -55,13 +55,13 @@ public class MessageController {
     }
 
     @PostMapping("/add/user/{userId}/channel/{channelId}")
-    public String addMessageByChannelAndUser(@RequestBody Message message, @PathVariable Long channelId,@PathVariable Long userId) {
+    public String addMessageByChannelAndUser(@RequestBody Message message, @PathVariable Long channelId, @PathVariable Long userId) {
         messageService.addMessageByChannelAndUser(message, channelId, userId);
         return "message has been added to message repository";
     }
 
     @GetMapping("/all/channel/{channelId}")
-    public List<Message> getMessagesByChannelId(@PathVariable Long channelId){
+    public List<Message> getMessagesByChannelId(@PathVariable Long channelId) {
         return messageService.findByChannelId(channelId);
     }
 }
