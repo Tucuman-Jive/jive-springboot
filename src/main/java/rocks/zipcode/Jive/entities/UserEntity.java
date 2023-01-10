@@ -23,6 +23,9 @@ public class UserEntity {
     private Set<Membership> memberships = new HashSet<>();
     // private List<Member> memberships = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany
+    private Set<Message> messages = new HashSet<>();
     public UserEntity() {
     }
 
@@ -58,5 +61,13 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 }
