@@ -11,6 +11,7 @@ public class Membership {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "channel_id_channel")
+    @JsonIgnoreProperties(value = {"description", "createdAt", "updatedAt"})
     private Channel channel;
 
     // private Timestamp updatedAt; //TOOK OUT!!!!
