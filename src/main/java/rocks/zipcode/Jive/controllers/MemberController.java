@@ -69,8 +69,17 @@ public class MemberController {
     // }
 
     @PostMapping("/add/users/{userId}")
-    public String addMembershipWithUser(@RequestBody Membership member, @PathVariable Long userId) {
+    public String addMembershipWithUser(@RequestBody Membership member, @PathVariable Long userId) { // do not need
+                                                                                                     // member
         memberService.assignUserToMembership(member, userId);
-        return "User has been saved to member service";
+        return "User has been saved to member repository";
+    }
+
+    @PostMapping("/add/users/{userId}/channels/{channelId}")
+    public String assignChannelToMembership(@RequestBody Membership member, @PathVariable Long channelId, // do not need
+                                                                                                          // member
+            @PathVariable Long userId) {
+        memberService.assignChannelToMembership(member, channelId, userId);
+        return "channel has been saved to member repository";
     }
 }

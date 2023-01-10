@@ -2,8 +2,10 @@ package rocks.zipcode.Jive.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rocks.zipcode.Jive.entities.Channel;
 import rocks.zipcode.Jive.entities.Membership;
 import rocks.zipcode.Jive.entities.UserEntity;
+import rocks.zipcode.Jive.repositories.ChannelRepository;
 import rocks.zipcode.Jive.repositories.MemberRepository;
 import rocks.zipcode.Jive.repositories.UserRepository;
 
@@ -15,6 +17,8 @@ public class MemberService {
     MemberRepository memberRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ChannelRepository channelRepository;
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -73,6 +77,15 @@ public class MemberService {
     public Membership assignUserToMembership(Membership member, Long userId) { // assign new membership
         UserEntity userEntity = userRepository.findById(userId).get();
         member.setUserEntity(userEntity);
+        return memberRepository.save(member);
+    }
+
+    public Membership assignChannelToMembership(Membership member, Long channelId, Long userId) { // assign new
+                                                                                                  // membership
+        Channel channel = channelRepository.findById(channelId).get();
+        UserEntity userEntity = userRepository.findById(userId).get();
+        member.setUserEntity(userEntity);
+        member.setChannel(channel);
         return memberRepository.save(member);
     }
 }

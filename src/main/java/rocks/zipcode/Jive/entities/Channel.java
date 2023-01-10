@@ -18,7 +18,10 @@ public class Channel {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    // TODO changed this
+    @JsonIgnore
+    @OneToMany
+    private Set<Membership> memberships = new HashSet<>();
+
     @JsonIgnore
     @OneToMany(mappedBy = "channel")
     private Set<Message> messages = new HashSet<>();
@@ -26,7 +29,6 @@ public class Channel {
     public Channel() {
     }
 
-    //TODO CHANGED THIS
     public Set<Message> getMessages() {
         return messages;
     }
@@ -73,5 +75,13 @@ public class Channel {
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public void setMemberships(Set<Membership> memberships) {
+        this.memberships = memberships;
+    }
+
+    public Set<Membership> getMemberships() {
+        return memberships;
     }
 }
