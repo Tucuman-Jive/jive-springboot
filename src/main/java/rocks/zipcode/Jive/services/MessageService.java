@@ -60,7 +60,7 @@ public class MessageService {
         return messageRepository.save(message);
     }
 
-    public List<Message> findByChannelId(String channelName){
+    public List<Message> findByChannelName(String channelName){
         return messageRepository.findByChannelName(channelName);
     }
 }

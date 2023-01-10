@@ -16,6 +16,7 @@ public class Message {
     private Long id;
     private String message;
     private Timestamp createdAt; //set value in service
+    //    private Timestamp updatedAt; //TODO do we want this value?
     @ManyToOne
     @JoinColumn(name = "channel_id_channel")
     @JsonIgnoreProperties(value = {"description", "createdAt", "updatedAt"})
@@ -26,8 +27,7 @@ public class Message {
     @JoinColumn(name = "id_user") // what is this...
     // @JoinColumn
     private UserEntity userEntity;
-//    private Timestamp createdAt;//TODO This must be implemented
-//    private Timestamp updatedAt;
+
 
     public Message() {
     }
@@ -72,13 +72,6 @@ public class Message {
         this.channel = channel;
     }
 
-//    public Timestamp getCreatedAt() {
-//        return createdAt;
-//    }
-//
-//    public void setCreatedAt(Timestamp createdAt) {
-//        this.createdAt = createdAt;
-//    }
 //
 //    public Timestamp getUpdatedAt() {
 //        return updatedAt;
