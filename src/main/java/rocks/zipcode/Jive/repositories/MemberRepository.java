@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface MemberRepository extends CrudRepository<Membership, Long> {
-     List<Membership> findByChannelId(Long id); //do this for messages?
+     List<Membership> findByChannelId(Long id); // do this for messages?
+
      List<Membership> findAll();
 }
