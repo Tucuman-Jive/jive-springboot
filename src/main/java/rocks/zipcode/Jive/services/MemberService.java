@@ -88,4 +88,5 @@ public class MemberService {
         member.setChannel(channel);
         return memberRepository.save(member);
     }
+
 }
