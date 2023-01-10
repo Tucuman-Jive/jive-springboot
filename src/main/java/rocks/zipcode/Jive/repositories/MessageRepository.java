@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends CrudRepository<Message, Long> {
 
-    List<Message> findByChannelName(String channelName);
+    List<Message> findByChannelId(Long channelId);
 
     List<Message> findAll();
 
