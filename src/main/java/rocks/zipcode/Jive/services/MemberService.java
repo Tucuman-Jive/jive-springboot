@@ -81,12 +81,16 @@ public class MemberService {
     }
 
     public Membership assignChannelToMembership(Membership member, Long channelId, Long userId) { // assign new
-                                                                                                  // membership
+        // membership
         Channel channel = channelRepository.findById(channelId).get();
         UserEntity userEntity = userRepository.findById(userId).get();
         member.setUserEntity(userEntity);
         member.setChannel(channel);
         return memberRepository.save(member);
+    }
+
+    public List<Membership> getChannelById(Long channelId) {
+        return memberRepository.findByChannelId(channelId);
     }
 
 }

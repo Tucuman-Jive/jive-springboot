@@ -5,9 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rocks.zipcode.Jive.entities.Membership;
-import rocks.zipcode.Jive.entities.UserEntity;
-import rocks.zipcode.Jive.repositories.MemberRepository;
-import rocks.zipcode.Jive.repositories.UserRepository;
 import rocks.zipcode.Jive.services.MemberService;
 
 import java.util.List;
@@ -70,16 +67,21 @@ public class MemberController {
 
     @PostMapping("/add/users/{userId}")
     public String addMembershipWithUser(@RequestBody Membership member, @PathVariable Long userId) { // do not need
-                                                                                                     // member
+        // member
         memberService.assignUserToMembership(member, userId);
         return "User has been saved to member repository";
     }
 
     @PostMapping("/add/users/{userId}/channels/{channelId}")
     public String assignChannelToMembership(@RequestBody Membership member, @PathVariable Long channelId, // do not need
-                                                                                                          // member
-            @PathVariable Long userId) {
+                                            // member
+                                            @PathVariable Long userId) {
         memberService.assignChannelToMembership(member, channelId, userId);
         return "channel has been saved to member repository";
+    }
+
+    @GetMapping("/all/channel/{channelId}")
+    public List<Membership> getChannelById(@PathVariable Long channelId) {
+        return memberService.getChannelById(channelId);
     }
 }

@@ -43,7 +43,7 @@ public class MessageService {
         messageRepository.deleteById(idMessage);
     }
 
-    public Message update(Long id, Message newMessageData){
+    public Message update(Long id, Message newMessageData) {
         Message originalMessage = messageRepository.findById(id).get();
         originalMessage.setId(newMessageData.getId());
         originalMessage.setChannel(newMessageData.getChannel());
@@ -51,7 +51,7 @@ public class MessageService {
         return messageRepository.save(originalMessage);
     }
 
-    public Message addMessageByChannelAndUser(Message message, Long channelId, Long userId){
+    public Message addMessageByChannelAndUser(Message message, Long channelId, Long userId) {
         Channel channel = channelRepository.findById(channelId).get();
         UserEntity userEntity = userRepository.findById(userId).get();
         message.setCreatedAt(new Timestamp(System.currentTimeMillis()));
@@ -60,7 +60,7 @@ public class MessageService {
         return messageRepository.save(message);
     }
 
-    public List<Message> findByChannelId(String channelId){
+    public List<Message> findByChannelId(Long channelId) {
         return messageRepository.findByChannelId(channelId);
     }
 }

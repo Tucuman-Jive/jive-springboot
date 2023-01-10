@@ -26,6 +26,7 @@ public class UserEntity {
     @JsonIgnore
     @OneToMany
     private Set<Message> messages = new HashSet<>();
+
     public UserEntity() {
     }
 

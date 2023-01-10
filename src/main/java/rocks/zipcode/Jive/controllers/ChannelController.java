@@ -20,15 +20,14 @@ public class ChannelController {
     private ChannelService channelService;
 
 
-
     @PostMapping("/add")
-    public String addChannel(@RequestBody Channel channel){
+    public String addChannel(@RequestBody Channel channel) {
         channelService.saveChannel(channel);
         return "Channel has been saved";
     }
 
     @GetMapping("/all")
-    public List<Channel> getAllChannels(){
+    public List<Channel> getAllChannels() {
         return channelService.getAllChannels();
     }
 
