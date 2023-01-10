@@ -1,0 +1,9 @@
+2023-01-10 15:10:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER_ENTITY" not found (this database is empty); SQL statement:
+insert into user_entity (id, password, user_name) values (default, ?, ?) [42104-214]
+2023-01-10 15:11:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER_ENTITY" not found (this database is empty); SQL statement:
+insert into user_entity (id, password, user_name) values (default, ?, ?) [42104-214]
+2023-01-10 15:12:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER_ENTITY" not found (this database is empty); SQL statement:
+insert into user_entity (id, password, user_name) values (default, ?, ?) [42104-214]
