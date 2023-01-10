@@ -72,10 +72,11 @@ public class MemberController {
         return "User has been saved to member repository";
     }
 
+    // TODO can cause duplicates in H2 if executed twice
     @PostMapping("/add/users/{userId}/channels/{channelId}")
     public String assignChannelToMembership(@RequestBody Membership member, @PathVariable Long channelId, // do not need
-                                            // member
-                                            @PathVariable Long userId) {
+            // member
+            @PathVariable Long userId) {
         memberService.assignChannelToMembership(member, channelId, userId);
         return "channel has been saved to member repository";
     }

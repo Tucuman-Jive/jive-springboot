@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Detail Page</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        color: #222;
+        max-width: 40rem;
+        padding: 2rem;
+        margin: auto;
+        background: #fafafa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Channel user list:</h1>
+    <div id="myData"></div>
+    <!-- <h2>Messages:</h2> -->
+    <div id="messages">
+      <h2>Messages:</h2>
+    </div>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const x = urlParams.get("x");
+      fetch("http://localhost:8080/members/all/channel/" + x)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          appendData(data);
+        })
+        .catch(function (err) {
+          console.log("error: " + err);
+        });
+
+      function appendData(data) {
+        var mainContainer = document.getElementById("myData");
+        for (let i = 0; i < data.length; i++) {
+          var pitem = document.createElement("p");
+          pitem.innerHTML = data[i].userEntity.userName;
+          mainContainer.appendChild(pitem);
+        }
+      }
+
+      fetch("http://localhost:8080/messages/all/channel/" + x)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          appendMessages(data);
+        })
+        .catch(function (err) {
+          console.log("error: " + err);
+        });
+
+      function appendMessages(data) {
+        var mainContainer = document.getElementById("messages");
+        for (let i = 0; i < data.length; i++) {
+          var pitem = document.createElement("p");
+          pitem.innerHTML = data[i].message; //this path?
+          mainContainer.appendChild(pitem);
+        }
+      }
+    </script>
+  </body>
+</html>
