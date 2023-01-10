@@ -5,13 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        color: #222;
+        max-width: 40rem;
+        padding: 2rem;
+        margin: auto;
+        background: #fafafa;
+      }
+    </style>
   </head>
   <body>
-    <h1>Users:</h1>
+    <h1>Channels:</h1>
     <div id="myData"></div>
 
     <script>
-      fetch("http://localhost:8080/users/all")
+      fetch("http://localhost:8080/channels/all")
         .then(function (response) {
           console.log(response);
           return response.json();
@@ -31,11 +42,11 @@
         for (var i = 0; i < data.length; i++) {
           var li = document.createElement("li");
           var a = document.createElement("a");
-          var linkText = document.createTextNode(data[i].userName);
+          var linkText = document.createTextNode(data[i].name);
           a.appendChild(linkText);
-          a.userName = data[i].userName;
-          a.href = "/detail.html?x=" + data[i].id;
-          a.href = "https://github.com/cdiazgranados/jive-springboot/tree/main";
+          a.userName = data[i].name;
+          a.href = "/src/webapp/channel.html?x=" + data[i].id;
+          //   a.href = "https://github.com/cdiazgranados/jive-springboot/tree/main";
           li.appendChild(a);
           unilist.appendChild(li);
         }

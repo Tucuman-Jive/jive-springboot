@@ -74,8 +74,8 @@ public class MemberController {
 
     @PostMapping("/add/users/{userId}/channels/{channelId}") //TODO do we want to remove @Requestbody?
     public String assignChannelToMembership(@RequestBody Membership member, @PathVariable Long channelId, // do not need
-                                            // member
-                                            @PathVariable Long userId) {
+            // member
+            @PathVariable Long userId) {
         memberService.assignChannelToMembership(member, channelId, userId);
         return "channel has been saved to member repository";
     }
