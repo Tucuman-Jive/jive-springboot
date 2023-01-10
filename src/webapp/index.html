@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Users:</h1>
+    <div id="myData"></div>
+
+    <script>
+      fetch("http://localhost:8080/users/all")
+        .then(function (response) {
+          console.log(response);
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          appendData(data);
+        })
+        .catch(function (err) {
+          console.log("error: " + err);
+        });
+
+      function appendData(data) {
+        var mainContainer = document.getElementById("myData");
+        var unilist = document.createElement("ul");
+        mainContainer.appendChild(unilist);
+        for (var i = 0; i < data.length; i++) {
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          var linkText = document.createTextNode(data[i].userName);
+          a.appendChild(linkText);
+          a.userName = data[i].userName;
+          a.href = "/detail.html?x=" + data[i].id;
+          a.href = "https://github.com/cdiazgranados/jive-springboot/tree/main";
+          li.appendChild(a);
+          unilist.appendChild(li);
+        }
+      }
+    </script>
+  </body>
+</html>
