@@ -1,36 +1,31 @@
 package rocks.zipcode.Jive.services;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-        import static org.junit.jupiter.api.Assertions.assertTrue;
-        import static org.mockito.ArgumentMatchers.any;
-        import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-        import org.junit.jupiter.api.BeforeEach;
-        import org.junit.jupiter.api.Test;
-        import org.mockito.InjectMocks;
-        import org.mockito.Mock;
-        import org.mockito.MockitoAnnotations;
-        import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
-        import rocks.zipcode.Jive.entities.Channel;
-        import rocks.zipcode.Jive.entities.Message;
-        import rocks.zipcode.Jive.entities.UserEntity;
-        import rocks.zipcode.Jive.repositories.MessageRepository;
-        import rocks.zipcode.Jive.repositories.ChannelRepository;
-        import rocks.zipcode.Jive.repositories.UserRepository;
-
+import rocks.zipcode.Jive.entities.Channel;
+import rocks.zipcode.Jive.entities.Message;
+import rocks.zipcode.Jive.entities.UserEntity;
+import rocks.zipcode.Jive.repositories.MessageRepository;
+import rocks.zipcode.Jive.repositories.ChannelRepository;
+import rocks.zipcode.Jive.repositories.UserRepository;
 
 @SpringBootTest
 public class MessageServiceTest {
-
-
-
-
-
 
     @InjectMocks
     private MessageService messageService;
@@ -84,23 +79,22 @@ public class MessageServiceTest {
         assertEquals("Test message", result.getMessage());
     }
 
-//        @Test
-//        public void testSaveMessage() {
-//            Message inputMessage = new Message();
-//            inputMessage.setMessage("Test message");
-//            when(messageRepository.save(inputMessage)).thenReturn(inputMessage);
-//            Message result = messageService.saveMessage(inputMessage);
-//            assertNotNull(result);
-//            assertEquals("Test message", result.getMessage());
-//        }
+    // @Test
+    // public void testSaveMessage() {
+    // Message inputMessage = new Message();
+    // inputMessage.setMessage("Test message");
+    // when(messageRepository.save(inputMessage)).thenReturn(inputMessage);
+    // Message result = messageService.saveMessage(inputMessage);
+    // assertNotNull(result);
+    // assertEquals("Test message", result.getMessage());
+    // }
 
+    @Test
+    public void testDeleteMessageById() {
+        messageService.deleteMessageById(1L);
+    }
 
-        @Test
-        public void testDeleteMessageById() {
-            messageService.deleteMessageById(1L);
-        }
-
-        @Test
+    @Test
         public void testUpdate() {
             when(messageRepository.findById(1L)).thenReturn(Optional.of(message));
             when(messageRepository.save(any(Message.class))).thenReturn(message);
@@ -113,7 +107,7 @@ public class MessageServiceTest {
             assertEquals("Updated message", result.getMessage());
         }
 
-        @Test
+    @Test
         public void testAddMessageByChannelAndUser() {
             when(channelRepository.findById(1L)).thenReturn(Optional.of(channel));
             when(userRepository.findById(1L)).thenReturn(Optional.of(userEntity));
@@ -125,12 +119,12 @@ public class MessageServiceTest {
             assertEquals(channel, result.getChannel());
         }
 
-//        @Test
-//        public void testFindByChannelName() {
-//            when(messageRepository.findByChannelName("Test channel")).thenReturn(messages);
-//            List<Message> result = messageService.findByChannelName("Test channel");
-//            assertNotNull(result);
-//            assertEquals(1, result.size());
-//            assertEquals("Test message", result.get(0).getMessage());
-//        }
+    @Test
+        public void testFindByChannelName() {
+            when(messageRepository.findByChannelName("Test channel")).thenReturn(messages);
+            List<Message> result = messageService.findByChannelName("Test channel");
+            assertNotNull(result);
+            assertEquals(1, result.size());
+            assertEquals("Test message", result.get(0).getMessage());
+        }
 }
