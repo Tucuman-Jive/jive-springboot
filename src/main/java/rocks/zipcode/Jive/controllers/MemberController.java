@@ -84,4 +84,11 @@ public class MemberController {
     public List<Membership> getChannelById(@PathVariable Long channelId) {
         return memberService.getChannelById(channelId);
     }
+
+    @GetMapping("/all/user/{userId}")
+    public List<Membership> getUserById(@PathVariable Long userId) {
+        return memberService.getUserById(userId);
+    }
+
+
 }

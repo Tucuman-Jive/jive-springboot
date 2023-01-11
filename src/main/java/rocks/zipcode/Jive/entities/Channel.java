@@ -15,8 +15,8 @@ public class Channel {
     private Long id;
     private String name;
     private String description;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
+//    private Timestamp createdAt;//TODO do we want these values?
+//    private Timestamp updatedAt;
 
     @JsonIgnore
     @OneToMany
@@ -61,21 +61,21 @@ public class Channel {
         this.description = description;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+//    public Timestamp getCreatedAt() { //TODO do we want these values? should we remove the setters and getters?
+//        return createdAt;
+//    }
+//
+//    public void setCreatedAt(Timestamp createdAt) {
+//        this.createdAt = createdAt;
+//    }
+//
+//    public Timestamp getUpdatedAt() {
+//        return updatedAt;
+//    }
+//
+//    public void setUpdatedAt(Timestamp updatedAt) {
+//        this.updatedAt = updatedAt;
+//    }
 
     public void setMemberships(Set<Membership> memberships) {
         this.memberships = memberships;

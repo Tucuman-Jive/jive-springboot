@@ -93,4 +93,7 @@ public class MemberService {
         return memberRepository.findByChannelId(channelId);
     }
 
+    public List<Membership> getUserById(Long userId) {
+        return memberRepository.getByUserEntityId(userId);
+    }
 }
