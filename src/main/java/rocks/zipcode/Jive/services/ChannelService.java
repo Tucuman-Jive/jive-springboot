@@ -45,8 +45,8 @@ public class ChannelService {
         originalChannel.setName(newChannelData.getName());
         originalChannel.setDescription(newChannelData.getDescription());
         originalChannel.setId(newChannelData.getId());
-        originalChannel.setCreatedAt(newChannelData.getCreatedAt());
-        originalChannel.setUpdatedAt(newChannelData.getUpdatedAt());
+//        originalChannel.setCreatedAt(newChannelData.getCreatedAt()); //TODO should we remove these setters/getters?
+//        originalChannel.setUpdatedAt(newChannelData.getUpdatedAt());
         return channelRepository.save(originalChannel);
     }
 }

@@ -119,13 +119,12 @@ public class MessageServiceTest {
             assertEquals(channel, result.getChannel());
         }
 
-    // @Test
-    // public void testFindByChannelName() {
-    // when(messageRepository.findByChannelName("Test
-    // channel")).thenReturn(messages);
-    // List<Message> result = messageService.findByChannelName("Test channel");
-    // assertNotNull(result);
-    // assertEquals(1, result.size());
-    // assertEquals("Test message", result.get(0).getMessage());
-    // }
+    @Test
+        public void testFindByChannelName() {
+            when(messageRepository.findByChannelName("Test channel")).thenReturn(messages);
+            List<Message> result = messageService.findByChannelName("Test channel");
+            assertNotNull(result);
+            assertEquals(1, result.size());
+            assertEquals("Test message", result.get(0).getMessage());
+        }
 }

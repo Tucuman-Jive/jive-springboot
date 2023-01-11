@@ -14,7 +14,7 @@ public class Membership {
     @JsonIgnoreProperties(value = {"description", "createdAt", "updatedAt"})
     private Channel channel;
 
-    // private Timestamp updatedAt; //TOOK OUT!!!!
+    // private Timestamp updatedAt; //TODO should we add a timestamp back in?
     // private Timestamp createdAt;
 
     // TODO changed this
