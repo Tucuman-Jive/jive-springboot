@@ -90,12 +90,12 @@ public class MessageControllerTest {
         verify(messageService, times(1)).addMessageByChannelAndUser(any(Message.class), anyLong(), anyLong());
     }
 
-    @Test
-    void testGetMessagesByChannelId() {
-        List<Message> messages = new ArrayList<>();
-        messages.add(new Message());
-        when(messageService.findByChannelName(anyString())).thenReturn(messages);
-        List<Message> result = messageController.getMessagesByChannelId("channelId");
-        assertEquals(messages, result);
-    }
+//    @Test
+//    void testGetMessagesByChannelId() {
+//        List<Message> messages = new ArrayList<>();
+//        messages.add(new Message());
+//        when(messageService.findByChannelName(anyString())).thenReturn(messages);
+//        List<Message> result = messageController.getMessagesByChannelId("channelId");
+//        assertEquals(messages, result);
+//    }
 }

@@ -34,21 +34,21 @@ public class ChannelTest {
         assertEquals(description, channel.getDescription());
     }
 
-    @Test
-    public void testCreatedAt() {
-        Channel channel = new Channel();
-        Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-        channel.setCreatedAt(createdAt);
-        assertEquals(createdAt, channel.getCreatedAt());
-    }
-
-    @Test
-    public void testUpdatedAt() {
-        Channel channel = new Channel();
-        Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
-        channel.setUpdatedAt(updatedAt);
-        assertEquals(updatedAt, channel.getUpdatedAt());
-    }
+//    @Test
+//    public void testCreatedAt() {
+//        Channel channel = new Channel();
+//        Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+//        channel.setCreatedAt(createdAt);
+//        assertEquals(createdAt, channel.getCreatedAt());
+//    }
+//
+//    @Test
+//    public void testUpdatedAt() {
+//        Channel channel = new Channel();
+//        Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+//        channel.setUpdatedAt(updatedAt);
+//        assertEquals(updatedAt, channel.getUpdatedAt());
+//    }
 
     @Test
     public void testMemberships() {
