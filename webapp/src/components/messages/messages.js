@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./messages.css";
-import "../messageBox/messagebox";
-import MessageBox from "../messageBox/messagebox";
+import "../MessageBox/messagebox";
+import MessageBox from "../MessageBox/messagebox";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

@@ -5,7 +5,6 @@ export default function MessageBox() {
   const [user, setUser] = useState([]);
   const [message, setMessage] = useState("");
   const [channel, setChannel] = useState([]);
-  const [payload, setPayload] = useState("");
 
   const userUrl = "http://localhost:8080/users/1";
   const postMessageUrl = "http://localhost:8080/messages/add/user/1/channel/1";
@@ -56,7 +55,6 @@ export default function MessageBox() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setPayload(message.toString);
     postMessage();
   };
 

@@ -1,5 +1,5 @@
 import "./App.css";
-import Messages from "./components/messages/messages";
+import Messages from "./Components/Messages/messages";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
