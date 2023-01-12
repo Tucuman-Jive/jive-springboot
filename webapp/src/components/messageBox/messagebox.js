@@ -1,32 +1,32 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-export default function MessageBox() {
-  const [user, setUser] = useState([]);
+export default function MessageBox({ user, channel }) {
+  // const [user, setUser] = useState([]);
   const [message, setMessage] = useState("");
-  const [channel, setChannel] = useState([]);
+  // const [channel, setChannel] = useState([]);
 
   const userUrl = "http://localhost:8080/users/1";
   const postMessageUrl = "http://localhost:8080/messages/add/user/1/channel/1";
   const channelUrl = "http://localhost:8080/channels/1";
 
-  const loadUser = async () => {
-    const result = await axios.get(userUrl);
-    setUser(result.data);
-  };
+  // const loadUser = async () => {
+  //   const result = await axios.get(userUrl);
+  //   setUser(result.data);
+  // };
 
-  const loadChannel = async () => {
-    const result = await axios.get(channelUrl);
-    setChannel(result.data);
-  };
+  // const loadChannel = async () => {
+  //   const result = await axios.get(channelUrl);
+  //   setChannel(result.data);
+  // };
 
-  useEffect(() => {
-    loadUser();
-  }, []);
+  // useEffect(() => {
+  //   loadUser();
+  // }, []);
 
-  useEffect(() => {
-    loadChannel();
-  }, []);
+  // useEffect(() => {
+  //   loadChannel();
+  // }, []);
 
   const options = {
     url: postMessageUrl,
@@ -53,9 +53,14 @@ export default function MessageBox() {
       console.log(response.status);
     });
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     postMessage();
+    refreshPage();
   };
 
   const renderBox = () => {

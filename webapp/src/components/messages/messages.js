@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./messages.css";
 import "../MessageBox/messagebox";
 import MessageBox from "../MessageBox/messagebox";
@@ -45,6 +45,16 @@ export default function Messages() {
     loadChannel();
   }, []);
 
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, []);
+
   const renderMessages = messages.map((message) => {
     if (message.userEntity.id === user.id)
       return (
@@ -83,7 +93,8 @@ export default function Messages() {
   return (
     <div>
       {renderMessages}
-      <MessageBox />
+      <MessageBox user={user} channel={channel} />
+      <div ref={messagesEndRef} />
     </div>
   );
 }
