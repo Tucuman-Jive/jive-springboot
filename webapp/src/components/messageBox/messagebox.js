@@ -6,9 +6,15 @@ export default function MessageBox({ user, channel }) {
   const [message, setMessage] = useState("");
   // const [channel, setChannel] = useState([]);
 
-  const userUrl = "http://localhost:8080/users/1";
-  const postMessageUrl = "http://localhost:8080/messages/add/user/1/channel/1";
-  const channelUrl = "http://localhost:8080/channels/1";
+  // const userUrl = "http://localhost:8080/users/1";
+
+  const postMessageUrl =
+    "http://localhost:8080/messages/add/user/" +
+    user.id +
+    "/channel/" +
+    channel.id;
+
+  // const channelUrl = "http://localhost:8080/channels/1";
 
   // const loadUser = async () => {
   //   const result = await axios.get(userUrl);
