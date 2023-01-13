@@ -45,7 +45,7 @@ export default function Messages() {
     loadMessages();
     loadChannel();
     loadUser();
-  }, []);
+  }, [messages]);
 
   // useEffect(() => {
   //   loadUser();
@@ -68,34 +68,32 @@ export default function Messages() {
   const renderMessages = messages.map((message) => {
     if (message.userEntity.id === user.id)
       return (
-        <Container>
-          <Row>
-            <Col></Col>
-            <Col></Col>
-            <Col>
-              <div className="message_right">
-                <strong>{message.message}</strong>
-                <p>me</p>
-                <br />
-              </div>
-            </Col>
-          </Row>
-        </Container>
+        // <Container>
+        //   <Row>
+        //     <Col></Col>
+        //     <Col>
+        <div className="message_right">
+          <strong>{message.message}</strong>
+          <p>me</p>
+          <br />
+        </div>
+        //     </Col>
+        //   </Row>
+        // </Container>
       );
     return (
-      <Container>
-        <Row>
-          <Col></Col>
-          <Col>
-            <div className="message_left">
-              <strong>{message.message}</strong>
-              <p>{message.userEntity.userName}</p>
-              <br />
-            </div>
-          </Col>
-          <Col></Col>
-        </Row>
-      </Container>
+      //  <Container>
+      //    <Row>
+      //       <Col>
+      <div className="message_left">
+        <strong>{message.message}</strong>
+        <p>{message.userEntity.userName}</p>
+        <br />
+      </div>
+      //     </Col>
+      //    <Col></Col>
+      //   </Row>
+      //   </Container>
     );
   });
 

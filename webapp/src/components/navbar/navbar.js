@@ -2,7 +2,8 @@ import React from "react";
 
 export default function navbar() {
   return (
-    <div>
+    //position: fixed
+    <div style={{ width: "100%" }}>
       <nav className="navbar navbar-expand-lg bg-primary">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
