@@ -90,5 +90,14 @@ public class MemberController {
         return memberService.getUserById(userId);
     }
 
+    @GetMapping("/dms/user/{userId}")
+    public List<Membership> getDMsByUserById(@PathVariable Long userId) {
+        return memberService.getDMsByUserId(userId);
+    }
+
+    @GetMapping("/channels/user/{userId}")
+    public List<Membership> getChannelsByUserById(@PathVariable Long userId) {
+        return memberService.getChannelsByUserId(userId);
+    }
 
 }
