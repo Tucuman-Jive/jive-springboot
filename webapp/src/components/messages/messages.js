@@ -1,23 +1,38 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import "./messages.css";
-import "../MessageBox/messagebox";
-import MessageBox from "../MessageBox/messagebox";
+import "../messageBox/messagebox";
+import MessageBox from "../messageBox/messagebox";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Routes,
+  useParams,
+} from "react-router-dom";
 
 export default function Messages() {
   const [messages, setMessages] = useState([]);
   const [user, setUser] = useState([]);
   const [channel, setChannel] = useState([]);
 
-  const messagesUrl = "http://localhost:8080/messages/all/channel/1";
+  const { id } = useParams();
+  console.log(id);
+
+  const messagesUrl = `http://localhost:8080/messages/all/channel/${id}`;
   const userUrl = "http://localhost:8080/users/2";
   const channelUrl = "http://localhost:8080/channels/1";
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const loadMessages = async () => {
     const result = await axios.get(messagesUrl);
+
     setMessages(result.data);
   };
 
@@ -33,15 +48,17 @@ export default function Messages() {
 
   useEffect(() => {
     loadMessages();
-  }, []);
-
-  useEffect(() => {
-    loadUser();
-  }, []);
-
-  useEffect(() => {
     loadChannel();
-  }, []);
+    loadUser();
+  });
+
+  // useEffect(() => {
+  //   loadUser();
+  // }, []);
+
+  // useEffect(() => {
+  //   loadChannel();
+  // }, []);
 
   const messagesEndRef = useRef(null);
 
