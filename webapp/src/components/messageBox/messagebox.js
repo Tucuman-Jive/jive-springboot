@@ -47,7 +47,7 @@ export default function MessageBox({ user, channel }) {
 
   const renderBox = () => {
     return (
-      <form>
+      <form align="center">
         <textarea
           value={message}
           required

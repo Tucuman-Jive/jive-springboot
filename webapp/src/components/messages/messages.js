@@ -23,7 +23,7 @@ export default function Messages() {
 
   const messagesUrl = `http://localhost:8080/messages/all/channel/${id}`;
   const userUrl = "http://localhost:8080/users/2";
-  const channelUrl = "http://localhost:8080/channels/1";
+  const channelUrl = `http://localhost:8080/channels/${id}`;
 
   const loadMessages = async () => {
     const result = await axios.get(messagesUrl);
@@ -70,6 +70,7 @@ export default function Messages() {
       return (
         <Container>
           <Row>
+            <Col></Col>
             <Col></Col>
             <Col>
               <div className="message_right">
