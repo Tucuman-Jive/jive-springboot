@@ -7,6 +7,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -119,12 +120,35 @@ public class MessageServiceTest {
             assertEquals(channel, result.getChannel());
         }
 
-//    @Test
-//        public void testFindByChannelName() {
-//            when(messageRepository.findByChannelName("Test channel")).thenReturn(messages);
-//            List<Message> result = messageService.findByChannelName("Test channel");
-//            assertNotNull(result);
-//            assertEquals(1, result.size());
-//            assertEquals("Test message", result.get(0).getMessage());
-//        }
+    @Test
+    public void testFindByChannelId() {
+        // Create a test channel
+        Channel channel = new Channel();
+        channel.setName("Test channel");
+        when(channelRepository.findById(channel.getId())).thenReturn(Optional.of(channel));
+
+        // Create a test message and add it to the test channel
+        Message message1 = new Message();
+        message1.setMessage("Test message 1");
+        message1.setChannel(channel);
+
+        // Create another test message and add it to the test channel
+        Message message2 = new Message();
+        message2.setMessage("Test message 2");
+        message2.setChannel(channel);
+
+        // mock the repository to return messages
+        when(messageRepository.findByChannelId(channel.getId())).thenReturn(Arrays.asList(message1, message2));
+
+        // Find the messages by the test channel's ID
+        List<Message> messages = messageService.findByChannelId(channel.getId());
+
+        // Assert that the correct messages have been found
+        assertEquals(2, messages.size());
+        assertTrue(messages.contains(message1));
+        assertTrue(messages.contains(message2));
+    }
+
+
+
 }
