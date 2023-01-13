@@ -20,15 +20,10 @@ export default function Messages() {
   const [channel, setChannel] = useState([]);
 
   const { id } = useParams();
-  console.log(id);
 
   const messagesUrl = `http://localhost:8080/messages/all/channel/${id}`;
   const userUrl = "http://localhost:8080/users/2";
   const channelUrl = "http://localhost:8080/channels/1";
-
-  const refreshPage = () => {
-    window.location.reload();
-  };
 
   const loadMessages = async () => {
     const result = await axios.get(messagesUrl);
@@ -50,7 +45,7 @@ export default function Messages() {
     loadMessages();
     loadChannel();
     loadUser();
-  });
+  }, []);
 
   // useEffect(() => {
   //   loadUser();
@@ -78,10 +73,8 @@ export default function Messages() {
             <Col></Col>
             <Col>
               <div className="message_right">
-                <p>
-                  <strong>{message.message}</strong>
-                </p>
-                <p>me!</p>
+                <strong>{message.message}</strong>
+                <p>me</p>
                 <br />
               </div>
             </Col>
