@@ -1,11 +1,16 @@
 import "./App.css";
-import Messages from "./Components/Messages/messages";
+import Messages from "./components/messages/messages";
 import "bootstrap/dist/css/bootstrap.css";
+import Sidebar from "./components/sidebar/sidebar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <Messages />
+      <Sidebar />
+      <Routes>
+        <Route path="/messages/:id" element={<Messages />} />
+      </Routes>
     </div>
   );
 }

@@ -2,37 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 
 export default function MessageBox({ user, channel }) {
-  // const [user, setUser] = useState([]);
   const [message, setMessage] = useState("");
-  // const [channel, setChannel] = useState([]);
-
-  // const userUrl = "http://localhost:8080/users/1";
 
   const postMessageUrl =
     "http://localhost:8080/messages/add/user/" +
     user.id +
     "/channel/" +
     channel.id;
-
-  // const channelUrl = "http://localhost:8080/channels/1";
-
-  // const loadUser = async () => {
-  //   const result = await axios.get(userUrl);
-  //   setUser(result.data);
-  // };
-
-  // const loadChannel = async () => {
-  //   const result = await axios.get(channelUrl);
-  //   setChannel(result.data);
-  // };
-
-  // useEffect(() => {
-  //   loadUser();
-  // }, []);
-
-  // useEffect(() => {
-  //   loadChannel();
-  // }, []);
 
   const options = {
     url: postMessageUrl,
