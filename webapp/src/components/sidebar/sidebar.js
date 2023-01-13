@@ -6,15 +6,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 export default function Sidebar() {
-  // const [channels, setChannels] = useState([]);
-
   const [membership, setMembership] = useState([]);
 
   const [dms, setDms] = useState([]);
-
-  // useEffect(() => {
-  //   loadChannels();
-  // }, []);
 
   useEffect(() => {
     loadMembership();
@@ -35,11 +29,6 @@ export default function Sidebar() {
     );
     setMembership(result.data);
   };
-
-  // const loadChannels = async () => {
-  //   const result = await axios.get("http://localhost:8080/channels/all");
-  //   setChannels(result.data);
-  // };
 
   return (
     <Container>
