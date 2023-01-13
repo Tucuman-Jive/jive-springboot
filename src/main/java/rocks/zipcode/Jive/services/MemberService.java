@@ -9,6 +9,7 @@ import rocks.zipcode.Jive.repositories.ChannelRepository;
 import rocks.zipcode.Jive.repositories.MemberRepository;
 import rocks.zipcode.Jive.repositories.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -95,5 +96,45 @@ public class MemberService {
 
     public List<Membership> getUserById(Long userId) {
         return memberRepository.getByUserEntityId(userId);
+    }
+
+    public List<Membership> getDMsByUserId(Long userId) {
+
+        List<Membership> membershipList = memberRepository.getByUserEntityId(userId);
+        List<Membership> dmList = new ArrayList<>();
+
+        for (Membership membership : membershipList) {
+
+            Long id = membership.getChannel().getId();
+            Channel channel = channelRepository.findById(id).get();
+            List<Membership> countList = memberRepository.findByChannelId(channel.getId());
+
+            int count = countList.size();
+
+            if (count == 2) {
+                dmList.add(membership);
+            }
+        }
+        return dmList;
+    }
+
+    public List<Membership> getChannelsByUserId(Long userId) {
+
+        List<Membership> membershipList = memberRepository.getByUserEntityId(userId);
+        List<Membership> channelList = new ArrayList<>();
+
+        for (Membership membership : membershipList) {
+
+            Long id = membership.getChannel().getId();
+            Channel channel = channelRepository.findById(id).get();
+            List<Membership> countList = memberRepository.findByChannelId(channel.getId());
+
+            int count = countList.size();
+
+            if (count > 2) {
+                channelList.add(membership);
+            }
+        }
+        return channelList;
     }
 }
