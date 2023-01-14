@@ -29,6 +29,10 @@ public class Channel {
     public Channel() {
     }
 
+    public Channel(long l, String channel1, String description1) {
+
+    }
+
     public Set<Message> getMessages() {
         return messages;
     }

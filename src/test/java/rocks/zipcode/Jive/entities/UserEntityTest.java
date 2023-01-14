@@ -1,6 +1,10 @@
 //package rocks.zipcode.Jive.entities;
+//import static org.hamcrest.Matchers.hasItems;
+//import static org.junit.Assert.assertThat;
 //
 //import static org.junit.jupiter.api.Assertions.*;
+//
+//import org.hamcrest.Matcher;
 //import org.junit.Test;
 //import java.util.HashSet;
 //import java.util.Set;
@@ -9,6 +13,40 @@
 //
 //
 //public class UserEntityTest {
+//    @Test
+//    public void testThreeArgumentConstructor() {
+//        UserEntity user = new UserEntity(1L, "john", "password");
+//        assertEquals(1L, user.getId().longValue());
+//        assertEquals("john", user.getUserName());
+//        assertEquals("password", user.getPassword());
+//    }
+//
+//}
+//    @Test
+//    public void testMembershipsGettersAndSetters() {
+//        UserEntity user = new UserEntity();
+//        Set<Membership> memberships = new HashSet<>();
+//        memberships.add(new Membership());
+//        user.setMemberships(memberships);
+//
+//        assertThat(user.getMemberships(), hasItems(memberships.toArray()));
+//    }
+//
+//    private void assertThat(Set<Membership> memberships, Matcher<Iterable<Object>> hasItems) {
+//    }
+//
+//    @Test
+//    public void testMessagesGettersAndSetters() {
+//        UserEntity user = new UserEntity();
+//        Set<Message> messages = new HashSet<>();
+//        messages.add(new Message());
+//        user.setMessages(messages);
+//
+//        assertEquals(messages, user.getMessages());
+//    }
+//
+//
+//
 //
 //
 ////    @Test
@@ -54,7 +92,7 @@
 ////        user2.setId(2L);
 ////        assertFalse(user1.equals(user2));
 ////    }
-//
+////
 ////    @Test
 ////    public void testHashCode() {
 ////        UserEntity user1 = new UserEntity();
@@ -72,7 +110,7 @@
 ////        assertEquals(user1.hashCode(), user2.hashCode());
 ////    }
 ////}
-//
+////
 ////    @Test
 ////    public void testNullFields() {
 ////        UserEntity user = new UserEntity();
@@ -82,4 +120,4 @@
 ////        assertNotNull(user.getMemberships());
 ////        assertTrue(user.getMemberships().isEmpty());
 ////    }
-////}
+//}
