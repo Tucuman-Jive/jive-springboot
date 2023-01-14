@@ -32,7 +32,7 @@ const Bar = () => {
   };
 
   return (
-    <div style={{ height: "100%" }}>
+    <div style={{ display: "flex", height: "100%" }}>
       <Sidebar>
         <Menu>
           <SubMenu label="Gigs">
