@@ -20,7 +20,7 @@
 //
 //    private UserService userService;
 //    private UserRepository userRepository;
-//    UserEntity user1 = new UserEntity()
+////    UserEntity user1 = new UserEntity();
 //
 //
 ////    @Mock

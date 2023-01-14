@@ -27,6 +27,9 @@ public class Membership {
     public Membership() {
     }
 
+    public Membership(long l, UserEntity userEntity, Channel channel) {
+    }
+
     // TODO changed this
     public UserEntity getUserEntity() {
         return userEntity;

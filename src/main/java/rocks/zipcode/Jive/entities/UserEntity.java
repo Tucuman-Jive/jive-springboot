@@ -30,6 +30,9 @@ public class UserEntity {
     public UserEntity() {
     }
 
+    public UserEntity(long l, String user1, String password1) {
+    }
+
     // TODO changed this
     public Set<Membership> getMemberships() {
         return memberships;
