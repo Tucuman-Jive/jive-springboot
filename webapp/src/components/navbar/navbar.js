@@ -7,17 +7,16 @@ export default function navbar() {
     <div style={{ width: "100%" }}>
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid">
-          <a className="text-light navbar-brand" href="#">
+          <a className="text-light navbar-brand" href="/">
             <img
               src={logo}
-              width="30"
-              height="30"
+              width="60"
+              height="60"
               class="d-inline-block align-top"
-              alt=""
+              alt="Jive Logo"
             ></img>
-            Jive Communication App
           </a>
-          <button className="btn btn-sm btn-outline-info" type="button">
+          <button className="btn btn-sm btn-outline-primary" type="button">
             Add User
           </button>
 

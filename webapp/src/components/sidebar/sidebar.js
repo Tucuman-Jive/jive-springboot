@@ -21,6 +21,7 @@ const Bar = () => {
 
   const loadDms = async () => {
     const result = await axios.get("http://localhost:8080/members/dms/user/1");
+
     setDms(result.data);
   };
 
@@ -28,12 +29,13 @@ const Bar = () => {
     const result = await axios.get(
       "http://localhost:8080/members/channels/user/1"
     );
+    console.log(result.data);
     setMembership(result.data);
   };
 
   return (
     <div style={{ display: "flex", height: "100%" }}>
-      <Sidebar>
+      <Sidebar style={{ height: "100vh" }}>
         <Menu>
           <SubMenu label="Gigs">
             {membership.map((membership) => (

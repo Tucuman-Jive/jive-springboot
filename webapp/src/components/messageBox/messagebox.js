@@ -48,12 +48,18 @@ export default function MessageBox({ user, channel }) {
   const renderBox = () => {
     return (
       <form align="center">
-        <textarea
-          value={message}
-          required
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
-        <button onClick={handleSubmit}>Post</button>
+        <div className="input-group">
+          <input
+            className="form-control"
+            type={"text"}
+            value={message}
+            required
+            onChange={(e) => setMessage(e.target.value)}
+          ></input>
+          <button onClick={handleSubmit} className="btn btn-outline-primary ">
+            Post
+          </button>
+        </div>
       </form>
     );
   };
