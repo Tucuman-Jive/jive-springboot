@@ -45,7 +45,7 @@ export default function Messages() {
     loadMessages();
     loadChannel();
     loadUser();
-  }, [messages]);
+  }, [useParams()]);
 
   // useEffect(() => {
   //   loadUser();
