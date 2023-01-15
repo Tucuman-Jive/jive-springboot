@@ -35,8 +35,21 @@ const Bar = () => {
 
   return (
     <div style={{ display: "flex", height: "100%" }}>
-      <Sidebar style={{ height: "100vh" }}>
+      <Sidebar
+        style={{ height: "100vh" }}
+        rootStyles={{
+          backgroundColor: "red",
+        }}
+      >
         <Menu>
+          <SubMenu label="Bands">
+            <MenuItem>
+              <Link className="nav-link">$Ganstagrass</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className="nav-link">$JiveTurkeys</Link>
+            </MenuItem>
+          </SubMenu>
           <SubMenu label="Gigs">
             {membership.map((membership) => (
               <MenuItem>
