@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import Bar from "./components/sidebar/sidebar";
 import Navbar from "./components/navbar/navbar";
 import Layout from "./components/layout";
-import Home from "./components/home/home";
+import Adduser from "./components/user/adduser";
+import Home from "./components/Home/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/adduser" element={<Adduser />} />
           <Route path="/messages/:id" element={<Messages />} />
         </Routes>
       </div>
