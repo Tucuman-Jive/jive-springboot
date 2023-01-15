@@ -47,14 +47,6 @@ export default function Messages() {
     loadUser();
   }, [useParams()]);
 
-  // useEffect(() => {
-  //   loadUser();
-  // }, []);
-
-  // useEffect(() => {
-  //   loadChannel();
-  // }, []);
-
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {

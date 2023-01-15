@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "./pngegg.png";
+import { Link } from "react-router-dom";
 
 export default function navbar() {
   return (
@@ -16,9 +17,13 @@ export default function navbar() {
               alt="Jive Logo"
             ></img>
           </a>
-          <button className="btn btn-sm btn-outline-primary" type="button">
+          <Link
+            className="btn btn-sm btn-outline-primary"
+            type="button"
+            to="/adduser"
+          >
             Add User
-          </button>
+          </Link>
 
           {/* <button className="btn btn-outline-light">Add User</button> */}
         </div>
