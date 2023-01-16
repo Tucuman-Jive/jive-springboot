@@ -17,11 +17,6 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    // @PostMapping("/add")
-    // public String addMember(@RequestBody Member member) {
-    // memberService.saveMember(member);
-    // return "member has been added";
-    // }
 
     @GetMapping("/all")
     public List<Membership> getAllMembers() {
@@ -54,16 +49,7 @@ public class MemberController {
         return "Member " + idUser + "has been deleted";
     }
 
-    // //Todo changed this
 
-    // @PutMapping("/{memberId}/users/{userId}")
-    // // @PutMapping("/add/users/{userId}") //post mapping instead?
-
-    // public String assignUserToMembership(@PathVariable Long memberId,
-    // @PathVariable Long userId) {
-    // memberService.assignUserToMembership(memberId, userId);
-    // return "User has been saved to member service";
-    // }
 
     @PostMapping("/add/users/{userId}")
     public String addMembershipWithUser(@RequestBody Membership member, @PathVariable Long userId) { // do not need

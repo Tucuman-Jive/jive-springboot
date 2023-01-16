@@ -51,28 +51,6 @@ public class MemberService {
         return memberRepository.save(originalMember);
     }
 
-    // Todo changed this
-
-    // public Member assignUserToMembership(Long memberId, Long userId) { // assign
-    // new membership
-    // Member member = memberRepository.findById(memberId).get();
-    // UserEntity userEntity = userRepository.findById(userId).get();
-    // member.setUserEntity(userEntity);
-    // return memberRepository.save(member);
-    // }
-    // user 1
-    // membership 1
-    // channel id: 1
-    // user: 1
-
-    // user 2
-    // membership 2
-    // channel id: 1
-    // user: 2
-
-    // membership 3
-    // channel id: 2
-    // user: 2
 
     public Membership assignUserToMembership(Membership member, Long userId) { // assign new membership
         UserEntity userEntity = userRepository.findById(userId).get();

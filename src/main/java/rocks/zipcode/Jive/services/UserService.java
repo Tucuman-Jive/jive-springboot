@@ -32,6 +32,11 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
+    }
+
+
     public UserEntity update(Long id, UserEntity newUserEntity) {
         UserEntity userEntity = userRepository.findById(id).get();
         userEntity.setUserName(newUserEntity.getUserName());
