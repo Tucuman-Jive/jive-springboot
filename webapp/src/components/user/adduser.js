@@ -1,6 +1,21 @@
 import React from "react";
 
-export default function home() {
+export default function AddUser() {
+  // const [user, setUser] = useState("");
+  // const [data, setData] = useState("");
+
+  // const loadUser = async () => {};
+
+  // const pickUser = async () => {
+  //   const result = await axios.get("http://localhost:8080/users/all");
+  //   setData(result.data);
+  //   data.forEach((result) => {
+  //     if (user == result.userName) {
+  //       setUser(result);
+  //     }
+  //   });
+  // };
+
   return (
     <div className="container">
       <div className="row">
