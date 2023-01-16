@@ -97,7 +97,7 @@ export default function Messages() {
   return (
     <div className="container">
       <div className="row">
-        <h2>Gig: {channel.name}</h2>
+        <h2>{channel.name}</h2>
         <p>{channel.description}</p>
         <div
           className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
