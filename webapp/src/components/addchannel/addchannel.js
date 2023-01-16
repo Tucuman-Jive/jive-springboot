@@ -71,7 +71,7 @@ function PostButton() {
 
   return (
     <>
-      <Button variant="btn btn-outline-light" onClick={handleShow}>
+      <Button variant="btn btn-outline-dark" onClick={handleShow}>
         New Gig
       </Button>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./pngegg.png";
-import PostButton from "../addchannel/addchannel";
+
+import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 export default function navbar() {
@@ -25,7 +26,8 @@ export default function navbar() {
           >
             Add User
           </Link> */}
-          <PostButton />
+
+          <Button variant="btn btn-outline-light">Log Out</Button>
 
           {/* <button className="btn btn-outline-light">Add User</button> */}
         </div>
