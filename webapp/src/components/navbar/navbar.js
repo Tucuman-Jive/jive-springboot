@@ -3,6 +3,7 @@ import logo from "./pngegg.png";
 
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import ViewUsers from "../bandInfo/viewUsers";
 
 export default function navbar() {
   return (
@@ -26,7 +27,7 @@ export default function navbar() {
           >
             Add User
           </Link> */}
-
+          <ViewUsers></ViewUsers>
           <Button variant="btn btn-outline-light">Log Out</Button>
 
           {/* <button className="btn btn-outline-light">Add User</button> */}
