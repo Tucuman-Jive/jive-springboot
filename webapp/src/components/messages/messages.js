@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import "./messages.css";
 import "../messageBox/messagebox";
+import DefaultImg from "./music-svgrepo-com.svg";
 import MessageBox from "../messageBox/messagebox";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -61,6 +62,10 @@ export default function Messages() {
     scrollToBottom();
   }, [id]);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const renderMessages = messages.map((message) => {
     if (message.userEntity.id === user.id)
       return (
@@ -70,7 +75,7 @@ export default function Messages() {
             <Col>
               <div
                 key={message.id}
-                className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+                className="col-md-6 offset-md-1 border rounded p-3 mt-2 shadow"
                 style={{
                   width: "100%",
                   // height: "70vh",
@@ -93,7 +98,7 @@ export default function Messages() {
           <Col>
             <div
               key={message.id}
-              className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+              className="col-md-6 offset-md-1 border rounded p-3 mt-2 shadow"
               style={{
                 width: "100%",
                 // height: "70vh",
@@ -101,7 +106,15 @@ export default function Messages() {
                 position: "relative",
               }}
             >
-              <img src="src/components/messages/music-svgrepo-com.svg" />
+              <div>
+                <img
+                  src={DefaultImg}
+                  width="60"
+                  height="60"
+                  class="d-inline-block align-top"
+                  alt="default logo"
+                />
+              </div>
               <strong>{message.message}</strong>
               <p className="text-primary">{message.userEntity.userName}</p>
             </div>
