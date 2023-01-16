@@ -22,27 +22,41 @@ export default function home() {
           </p>
           <h5>Contributors</h5>
           <p>
-            <a href="https://github.com/Emory-Miller">Emory Miller</a>
-          </p>
-          <p>
-            <a href="https://github.com/cdiazgranados">Carolina Diazgranados</a>
-          </p>
-          <p>
-            <a href="https://github.com/DanJCasey">Dan Casey</a>
-          </p>
-          <h5>Github</h5>
-          <p>
-            <a href="https://github.com/Tucuman-Jive/jive-springboot">
-              Source code
+            <a href="https://github.com/Emory-Miller" target="_blank">
+              Emory Miller
             </a>
           </p>
           <p>
-            This is a final project for
-            <a href="https://www.zipcodewilmington.com"> Zip Code Wilmington</a>
+            <a href="https://github.com/cdiazgranados" target="_blank">
+              Carolina Diazgranados
+            </a>
+          </p>
+          <p>
+            <a href="https://github.com/DanJCasey" target="_blank">
+              Dan Casey
+            </a>
+          </p>
+          <h5>More details</h5>
+
+          <p>
+            Final project for{" "}
+            <a href="https://www.zipcodewilmington.com" target="_blank">
+              {" "}
+              Zip Code Wilmington
+            </a>{" "}
+            built utilizing React, Java, and Spring Boot. <br></br>
+            <a
+              href="https://github.com/Tucuman-Jive/jive-springboot"
+              target="_blank"
+            >
+              Source code
+            </a>
           </p>
         </div>
         <div className="col md-6">
-          <img src={Logo}></img>
+          <a href="https://jive.co.za/" target="_blank">
+            <img src={Logo}></img>
+          </a>
         </div>
       </div>
     </div>
