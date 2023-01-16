@@ -89,7 +89,8 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
-    public Membership assignChannelToMembershipByName(Membership member, String channelName, Long userId) { // assign new
+    public Membership assignChannelToMembershipByName(Membership member, String channelName, Long userId) { // assign
+                                                                                                            // new
         // membership
         Channel channel = channelRepository.findByName(channelName);
         UserEntity userEntity = userRepository.findById(userId).get();
@@ -143,7 +144,7 @@ public class MemberService {
 
             int count = countList.size();
 
-            if (count git a 2) {
+            if (count != 2) {
                 channelList.add(membership);
             }
         }
