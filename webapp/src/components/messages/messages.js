@@ -61,7 +61,7 @@ export default function Messages() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [id]);
+  }, [messages]);
 
   const refreshPage = () => {
     window.location.reload();
@@ -84,10 +84,19 @@ export default function Messages() {
                   position: "relative",
                 }}
               >
-                <strong align="right">{message.message}</strong>
-                <p className="text-primary" align="right">
-                  me
-                </p>
+                <div
+                  style={{
+                    width: "100%",
+                    // height: "70vh",
+                    float: "right",
+                    position: "relative",
+                  }}
+                >
+                  <strong align="right">{message.message}</strong>
+                  <p className="text-primary" align="right">
+                    me
+                  </p>
+                </div>
               </div>
             </Col>
           </Row>

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rocks.zipcode.Jive.entities.Membership;
+import rocks.zipcode.Jive.entities.UserEntity;
 import rocks.zipcode.Jive.services.MemberService;
 
 import java.util.List;
@@ -80,7 +81,7 @@ public class MemberController {
     }
 
     @GetMapping("/all/notchannel/{channelId}")
-    public List<Membership> getMembersNotInChannelByChannelId(@PathVariable Long channelId) {
+    public List<UserEntity> getMembersNotInChannelByChannelId(@PathVariable Long channelId) {
         return memberService.getMembersNotInChannelByChannelId(channelId);
     }
 
