@@ -10,6 +10,8 @@ import java.util.List;
 public interface MemberRepository extends CrudRepository<Membership, Long> {
     List<Membership> findByChannelId(Long id); // do this for messages?
 
+    List<Membership> findByChannelName(String channelName);
+
     List<Membership> getByUserEntityId(Long id);
 
     List<Membership> findAll();

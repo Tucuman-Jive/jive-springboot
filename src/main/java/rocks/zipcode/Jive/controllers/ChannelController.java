@@ -41,6 +41,16 @@ public class ChannelController {
         }
     }
 
+    @GetMapping("/name/{channelName}")
+    public ResponseEntity<Channel> getChannelByName(@PathVariable String channelName) {
+        try {
+            Channel channel = channelService.getChannelByName(channelName);
+            return new ResponseEntity<Channel>(channel, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<Channel>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping("/{idChannel}")
     public ResponseEntity<Channel> update(@RequestBody Channel channel, @PathVariable Long idChannel) {
         try {
