@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import PostButton from "../addchannel/addchannel";
 
 const Bar = () => {
   const [membership, setMembership] = useState([]);
@@ -53,6 +55,9 @@ const Bar = () => {
             <MenuItem>
               <Link className="nav-link">$JiveTurkeys</Link>
             </MenuItem>
+            <MenuItem>
+              <Button variant="btn btn-outline-dark">Add Band</Button>
+            </MenuItem>
           </SubMenu>
           <SubMenu label="Gigs">
             {membership.map((membership) => (
@@ -65,6 +70,9 @@ const Bar = () => {
                 </Link>
               </MenuItem>
             ))}
+            <MenuItem>
+              <PostButton />
+            </MenuItem>
           </SubMenu>
           <SubMenu label="Solo Messages">
             {dms.map((membership) => (
