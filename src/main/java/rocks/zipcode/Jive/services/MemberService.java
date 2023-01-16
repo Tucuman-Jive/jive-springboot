@@ -31,7 +31,6 @@ public class MemberService {
 
     public Membership getMemberByID(Long id) {
         return memberRepository.findById(id).get();
-
     }
 
     public void saveMember(Membership member) {
@@ -90,8 +89,21 @@ public class MemberService {
         return memberRepository.save(member);
     }
 
+    public Membership assignChannelToMembershipByName(Membership member, String channelName, Long userId) { // assign new
+        // membership
+        Channel channel = channelRepository.findByName(channelName);
+        UserEntity userEntity = userRepository.findById(userId).get();
+        member.setUserEntity(userEntity);
+        member.setChannel(channel);
+        return memberRepository.save(member);
+    }
+
     public List<Membership> getChannelById(Long channelId) {
         return memberRepository.findByChannelId(channelId);
+    }
+
+    public List<Membership> getChannelByName(String channelName) {
+        return memberRepository.findByChannelName(channelName);
     }
 
     public List<Membership> getUserById(Long userId) {
