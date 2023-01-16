@@ -1,6 +1,7 @@
 package rocks.zipcode.Jive.entities;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,6 +32,9 @@ public class UserEntity {
     }
 
     public UserEntity(long l, String user1, String password1) {
+    }
+
+    public UserEntity(String user1, String password1) {
     }
 
     // TODO changed this
@@ -74,4 +78,18 @@ public class UserEntity {
     public void setMessages(Set<Message> messages) {
         this.messages = messages;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
 }
