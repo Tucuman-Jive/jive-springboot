@@ -18,13 +18,13 @@ export default function navbar() {
               alt="Jive Logo"
             ></img>
           </a>
-          <Link
+          {/* <Link
             className="btn btn-sm btn-outline-primary"
             type="button"
             to="/adduser"
           >
             Add User
-          </Link>
+          </Link> */}
           <PostButton />
 
           {/* <button className="btn btn-outline-light">Add User</button> */}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
+import Button from "react-bootstrap/Button";
 
 export default function MessageBox({ user, channel }) {
   const [message, setMessage] = useState("");
@@ -56,9 +57,13 @@ export default function MessageBox({ user, channel }) {
             required
             onChange={(e) => setMessage(e.target.value)}
           ></input>
-          <button onClick={handleSubmit} className="btn btn-outline-primary ">
-            Post
-          </button>
+          <Button
+            onClick={handleSubmit}
+            className="btn btn-outline-primary "
+            variant="primary"
+          >
+            jive!
+          </Button>
         </div>
       </form>
     );
