@@ -53,12 +53,12 @@ export default function Messages() {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    messagesEndRef.current.scrollIntoView({ behavior: "auto" });
   };
 
   useEffect(() => {
     scrollToBottom();
-  }, [id]);
+  }, [useParams()]);
 
   const renderMessages = messages.map((message) => {
     if (message.userEntity.id === user.id)
@@ -67,12 +67,21 @@ export default function Messages() {
           <Row>
             <Col></Col>
             <Col>
-              <div style={{ float: "right" }} key={message.id}>
+              <div
+                className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+                style={{
+                  width: "100%",
+                  height: "flex",
+                  float: "right",
+                  position: "relative",
+                  // padding: "10px",
+                }}
+                key={message.id}
+              >
                 <strong>{message.message}</strong>
                 <p className="text-primary" align="right">
                   me
                 </p>
-                <br />
               </div>
             </Col>
           </Row>
@@ -82,10 +91,20 @@ export default function Messages() {
       <Container>
         <Row>
           <Col>
-            <div key={message.id}>
+            <div
+              className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+              key={message.id}
+              style={{
+                flex: "1",
+                width: "100%",
+                // height: "10vh",
+                float: "left",
+                position: "relative",
+                // padding: "10px",
+              }}
+            >
               <strong>{message.message}</strong>
               <p className="text-primary">{message.userEntity.userName}</p>
-              <br />
             </div>
           </Col>
           <Col></Col>
@@ -100,7 +119,6 @@ export default function Messages() {
         <h2>{channel.name}</h2>
         <p>{channel.description}</p>
         <div
-          className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
           style={{
             overflow: "auto",
             width: "85%",

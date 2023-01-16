@@ -18,6 +18,7 @@ export default function navbar() {
               alt="Jive Logo"
             ></img>
           </a>
+          <p className="text-white" align="left"></p>
           {/* <Link
             className="btn btn-sm btn-outline-primary"
             type="button"
@@ -26,7 +27,6 @@ export default function navbar() {
             Add User
           </Link> */}
           <PostButton />
-
           {/* <button className="btn btn-outline-light">Add User</button> */}
         </div>
       </nav>
