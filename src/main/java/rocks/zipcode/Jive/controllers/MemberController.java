@@ -93,10 +93,16 @@ public class MemberController {
         return memberService.getChannelById(channelId);
     }
 
+    @GetMapping("/all/notchannel/{channelId}")
+    public List<Membership> getMembersNotInChannelByChannelId(@PathVariable Long channelId) {
+        return memberService.getMembersNotInChannelByChannelId(channelId);
+    }
+
     @GetMapping("/all/channelName/{channelName}")
     public List<Membership> getChannelByName(@PathVariable String channelName) {
         return memberService.getChannelByName(channelName);
     }
+
 
     @GetMapping("/all/user/{userId}")
     public List<Membership> getUserById(@PathVariable Long userId) {

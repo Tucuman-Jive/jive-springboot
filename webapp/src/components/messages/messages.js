@@ -15,6 +15,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { common } from "@mui/material/colors";
+import UserButton from "../userbutton/userbutton";
 
 export default function Messages() {
   const [messages, setMessages] = useState([]);
@@ -106,17 +107,27 @@ export default function Messages() {
                 position: "relative",
               }}
             >
-              <div>
-                <img
-                  src={DefaultImg}
-                  width="60"
-                  height="60"
-                  class="d-inline-block align-top"
-                  alt="default logo"
-                />
-              </div>
-              <strong>{message.message}</strong>
-              <p className="text-primary">{message.userEntity.userName}</p>
+              <Container>
+                <Row>
+                  <Col md="auto">
+                    <div>
+                      <img
+                        src={DefaultImg}
+                        width="60"
+                        height="60"
+                        class="d-inline-block align-top"
+                        alt="default logo"
+                      />
+                    </div>
+                  </Col>
+                  <Col>
+                    <p className="text-primary">
+                      <font size="2">{message.userEntity.userName}</font>
+                    </p>
+                    <strong>{message.message}</strong>
+                  </Col>
+                </Row>
+              </Container>
             </div>
           </Col>
           <Col></Col>
@@ -128,8 +139,15 @@ export default function Messages() {
   return (
     <div className="container">
       <div className="row">
-        <h2>{channel.name}</h2>
-        <p>{channel.description}</p>
+        <Row>
+          <Col>
+            <h2>{channel.name}</h2>
+            <p>{channel.description}</p>
+          </Col>
+          <Col align="right">
+            <UserButton channel={channel} />
+          </Col>
+        </Row>
         <div
           className="border rounded"
           style={{
