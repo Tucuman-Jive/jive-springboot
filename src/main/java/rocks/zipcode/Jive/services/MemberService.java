@@ -1,5 +1,6 @@
 package rocks.zipcode.Jive.services;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rocks.zipcode.Jive.entities.Channel;
@@ -68,7 +69,7 @@ public class MemberService {
     }
 
     public Membership assignChannelToMembershipByName(Membership member, String channelName, Long userId) { // assign
-                                                                                                            // new
+        // new
         // membership
         Channel channel = channelRepository.findByName(channelName);
         UserEntity userEntity = userRepository.findById(userId).get();
@@ -129,15 +130,22 @@ public class MemberService {
         return channelList;
     }
 
-    public List<Membership> getMembersNotInChannelByChannelId(Long channelId) {
-        List<Membership> allMembers = memberRepository.findAll();
+    public List<UserEntity> getMembersNotInChannelByChannelId(Long channelId) {
+        List<UserEntity> allUsers = userRepository.findAll();
         List<Membership> channelMembers = memberRepository.findByChannelId(channelId);
-        List<Membership> membersNotInChannel = new ArrayList<>();
-        for(Membership membership : allMembers){
-            if (!channelMembers.contains(membership)){
-                membersNotInChannel.add(membership);
+        List<UserEntity> usersInChannel = new ArrayList<>();
+        List<UserEntity> usersNotInChannel = new ArrayList<>();
+
+        for (Membership membership : channelMembers){
+            usersInChannel.add(membership.getUserEntity());
+            }
+
+        for (UserEntity user : allUsers){
+            if(!usersInChannel.contains(user)){
+                usersNotInChannel.add(user);
             }
         }
-        return membersNotInChannel;
+
+        return usersNotInChannel;
     }
 }

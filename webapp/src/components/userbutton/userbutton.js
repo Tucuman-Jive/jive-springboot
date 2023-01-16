@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const styles = {
   textbox: {
@@ -18,9 +19,10 @@ const styles = {
 };
 
 function UserButton({ channel }) {
-  const [name, setName] = useState("");
   const [members, setMembers] = useState([]);
-  const [description, setDescription] = useState("");
+  const [notMembers, setNotMembers] = useState([]);
+  const [eOption, setEOption] = useState("");
+  const [optionValue, setOptionValue] = useState("");
 
   const userId = 1;
 
@@ -29,22 +31,60 @@ function UserButton({ channel }) {
   const getMembersURL =
     "http://localhost:8080/members/all/channel/" + channel.id;
 
+  const addMemberURL =
+    "http://localhost:8080/members/add/users/" +
+    eOption.value +
+    "/channels/" +
+    id;
+
+  const options = {
+    url: addMemberURL,
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+    data: {},
+  };
+
+  const postNewMember = () =>
+    axios(options).then((response) => {
+      console.log(response.status);
+    });
+
   const loadMembers = async () => {
     const result = await axios.get(getMembersURL);
     setMembers(result.data);
   };
 
+  const getNotMembersURL =
+    "http://localhost:8080/members/all/notchannel/" + channel.id;
+
+  const loadNotMembers = async () => {
+    const result = await axios.get(getNotMembersURL);
+    setNotMembers(result.data);
+  };
+
   useEffect(() => {
     loadMembers();
-  }, [id]);
+  }, [channel]);
+
+  useEffect(() => {
+    loadNotMembers();
+  }, [channel]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setEOption(document.getElementById("dropdown"));
+
+    console.log(eOption.value);
+    postNewMember();
+
     setShow(false);
 
-    setDescription("");
-    setName("");
+    loadMembers();
+    loadNotMembers();
 
     refreshPage();
   };
@@ -77,24 +117,34 @@ function UserButton({ channel }) {
   return (
     <>
       <Button variant="btn btn-outline-dark" onClick={handleShow}>
-        Users
+        Gig Members
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Users</Modal.Title>
+          <Modal.Title>Gig Members</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {members.map((member) => (
-            <div key={member.userEntity.id}>{member.userEntity.userName}</div>
-          ))}
+          <ListGroup>
+            {members.map((member) => (
+              <div key={member.userEntity.id}>
+                <ListGroup.Item>{member.userEntity.userName}</ListGroup.Item>
+              </div>
+            ))}
+          </ListGroup>
         </Modal.Body>
         <Modal.Footer>
+          <select class="form-select" id="dropdown">
+            <option selected>Select new Member</option>
+            {notMembers.map((notMember) => (
+              <option value={notMember.id}>{notMember.userName}</option>
+            ))}
+          </select>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
-            Add User
+            Add Member
           </Button>
         </Modal.Footer>
       </Modal>
