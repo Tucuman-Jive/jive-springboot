@@ -13,6 +13,7 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
+import { common } from "@mui/material/colors";
 
 export default function Messages() {
   const [messages, setMessages] = useState([]);
@@ -67,12 +68,20 @@ export default function Messages() {
           <Row>
             <Col></Col>
             <Col>
-              <div style={{ float: "right" }} key={message.id}>
-                <strong>{message.message}</strong>
+              <div
+                key={message.id}
+                className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+                style={{
+                  width: "100%",
+                  // height: "70vh",
+                  float: "right",
+                  position: "relative",
+                }}
+              >
+                <strong align="right">{message.message}</strong>
                 <p className="text-primary" align="right">
                   me
                 </p>
-                <br />
               </div>
             </Col>
           </Row>
@@ -82,10 +91,19 @@ export default function Messages() {
       <Container>
         <Row>
           <Col>
-            <div key={message.id}>
+            <div
+              key={message.id}
+              className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+              style={{
+                width: "100%",
+                // height: "70vh",
+                float: "left",
+                position: "relative",
+              }}
+            >
+              <img src="src/components/messages/music-svgrepo-com.svg" />
               <strong>{message.message}</strong>
               <p className="text-primary">{message.userEntity.userName}</p>
-              <br />
             </div>
           </Col>
           <Col></Col>
@@ -100,10 +118,10 @@ export default function Messages() {
         <h2>{channel.name}</h2>
         <p>{channel.description}</p>
         <div
-          className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+          className="border rounded"
           style={{
             overflow: "auto",
-            width: "85%",
+            width: "100%",
             height: "70vh",
             float: "left",
             position: "relative",
