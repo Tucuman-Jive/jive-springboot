@@ -46,6 +46,22 @@ export default function MessageBox({ user, channel }) {
     refreshPage();
   };
 
+  useEffect(() => {
+    const keyDownHandler = (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+
+        handleSubmit(e);
+      }
+    };
+
+    document.addEventListener("keydown", keyDownHandler);
+
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, [handleSubmit]);
+
   const renderBox = () => {
     return (
       <form align="center">

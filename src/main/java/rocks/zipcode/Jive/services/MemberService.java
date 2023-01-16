@@ -128,4 +128,16 @@ public class MemberService {
         }
         return channelList;
     }
+
+    public List<Membership> getMembersNotInChannelByChannelId(Long channelId) {
+        List<Membership> allMembers = memberRepository.findAll();
+        List<Membership> channelMembers = memberRepository.findByChannelId(channelId);
+        List<Membership> membersNotInChannel = new ArrayList<>();
+        for(Membership membership : allMembers){
+            if (!channelMembers.contains(membership)){
+                membersNotInChannel.add(membership);
+            }
+        }
+        return membersNotInChannel;
+    }
 }
