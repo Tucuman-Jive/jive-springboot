@@ -5,8 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rocks.zipcode.Jive.entities.Channel;
+import rocks.zipcode.Jive.entities.Membership;
 import rocks.zipcode.Jive.repositories.ChannelRepository;
 import rocks.zipcode.Jive.services.ChannelService;
+import rocks.zipcode.Jive.services.MemberService;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -19,12 +21,25 @@ public class ChannelController {
     @Autowired
     private ChannelService channelService;
 
+    @Autowired
+    private MemberService memberService;
+
 
     @PostMapping("/add")
     public String addChannel(@RequestBody Channel channel) {
         channelService.saveChannel(channel);
         return "Channel has been saved";
     }
+
+    @PostMapping("/add/button/{idUser}")
+    public String addChannelAndMember(@RequestBody Channel channel, @PathVariable Long idUser) {
+        channelService.saveChannel(channel);
+        Long channelId = channelService.getChannelByName(channel.getName()).getId();
+        Membership member = new Membership();
+        memberService.assignChannelToMembership(member, channelId, idUser);
+        return "Channel has been saved";
+    }
+
 
     @GetMapping("/all")
     public List<Channel> getAllChannels() {

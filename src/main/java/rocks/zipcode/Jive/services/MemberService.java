@@ -143,7 +143,7 @@ public class MemberService {
 
             int count = countList.size();
 
-            if (count > 2) {
+            if (count != 2) {
                 channelList.add(membership);
             }
         }

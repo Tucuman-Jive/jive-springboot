@@ -19,10 +19,12 @@ export default function Messages() {
   const [user, setUser] = useState([]);
   const [channel, setChannel] = useState([]);
 
+  const userId = 1;
+
   const { id } = useParams();
 
   const messagesUrl = `http://localhost:8080/messages/all/channel/${id}`;
-  const userUrl = "http://localhost:8080/users/2";
+  const userUrl = "http://localhost:8080/users/" + userId;
   const channelUrl = `http://localhost:8080/channels/${id}`;
 
   const loadMessages = async () => {
@@ -45,6 +47,7 @@ export default function Messages() {
     loadMessages();
     loadChannel();
     loadUser();
+    scrollToBottom();
   }, [useParams()]);
 
   const messagesEndRef = useRef(null);
@@ -55,7 +58,7 @@ export default function Messages() {
 
   useEffect(() => {
     scrollToBottom();
-  }, []);
+  }, [id]);
 
   const renderMessages = messages.map((message) => {
     if (message.userEntity.id === user.id)
@@ -64,9 +67,11 @@ export default function Messages() {
           <Row>
             <Col></Col>
             <Col>
-              <div>
+              <div style={{ float: "right" }} key={message.id}>
                 <strong>{message.message}</strong>
-                <p className="text-primary">me</p>
+                <p className="text-primary" align="right">
+                  me
+                </p>
                 <br />
               </div>
             </Col>
@@ -77,7 +82,7 @@ export default function Messages() {
       <Container>
         <Row>
           <Col>
-            <div>
+            <div key={message.id}>
               <strong>{message.message}</strong>
               <p className="text-primary">{message.userEntity.userName}</p>
               <br />
@@ -92,11 +97,24 @@ export default function Messages() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow">
+        <h2>Gig: {channel.name}</h2>
+        <p>{channel.description}</p>
+        <div
+          className="col-md-6 offset-md-1 border rounded p-4 mt-2 shadow"
+          style={{
+            overflow: "auto",
+            width: "85%",
+            height: "70vh",
+            float: "left",
+            position: "relative",
+            padding: "10px",
+          }}
+        >
           {renderMessages}
-          <MessageBox user={user} channel={channel} />
           <div ref={messagesEndRef} />
         </div>
+
+        <MessageBox user={user} channel={channel} />
       </div>
     </div>
   );

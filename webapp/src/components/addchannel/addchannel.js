@@ -20,12 +20,8 @@ function PostButton() {
 
   const userId = 1;
 
-  const createChannelURL = "http://localhost:8080/channels/add";
-  const createMembershipURL =
-    "http://localhost:8080/members/add/users/" +
-    userId +
-    "/channelName/" +
-    name;
+  const createChannelURL =
+    "http://localhost:8080/channels/add/button/" + userId;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,16 +35,6 @@ function PostButton() {
     }).then(() => {
       console.log("New channel created");
     });
-
-    setTimeout(function () {
-      fetch(createMembershipURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: {},
-      }).then(() => {
-        console.log("New membership created");
-      });
-    }, 1000);
 
     setShow(false);
 
@@ -86,26 +72,26 @@ function PostButton() {
   return (
     <>
       <Button variant="btn btn-outline-light" onClick={handleShow}>
-        Create Channel
+        New Gig
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create a Channel</Modal.Title>
+          <Modal.Title>Compose a Gig!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <label style={{ textAlign: "left", display: "block" }}>
-              Channel Name
+              Gig Name
             </label>
-            <textarea
+            <input
               value={name}
               required
               onChange={(e) => setName(e.target.value)}
               style={styles.textbox}
-            ></textarea>
+            ></input>
             <label style={{ textAlign: "left", display: "block" }}>
-              Add description
+              Add a description!
             </label>
             <input
               type="text"

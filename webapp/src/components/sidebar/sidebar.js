@@ -11,6 +11,8 @@ const Bar = () => {
 
   const [dms, setDms] = useState([]);
 
+  const userId = 1;
+
   useEffect(() => {
     loadMembership();
   }, []);
@@ -20,14 +22,16 @@ const Bar = () => {
   }, []);
 
   const loadDms = async () => {
-    const result = await axios.get("http://localhost:8080/members/dms/user/1");
+    const result = await axios.get(
+      "http://localhost:8080/members/dms/user/" + userId
+    );
 
     setDms(result.data);
   };
 
   const loadMembership = async () => {
     const result = await axios.get(
-      "http://localhost:8080/members/channels/user/1"
+      "http://localhost:8080/members/channels/user/" + userId
     );
     console.log(result.data);
     setMembership(result.data);
@@ -36,7 +40,7 @@ const Bar = () => {
   return (
     <div style={{ display: "flex", height: "100%" }}>
       <Sidebar
-        style={{ height: "100vh" }}
+        style={{ height: "90vh" }}
         rootStyles={{
           backgroundColor: "red",
         }}
@@ -52,24 +56,24 @@ const Bar = () => {
           </SubMenu>
           <SubMenu label="Gigs">
             {membership.map((membership) => (
-              <MenuItem>
+              <MenuItem key={membership.id}>
                 <Link
                   className="nav-link"
                   to={`messages/${membership.channel.id}`}
                 >
-                  {membership.channel.name}
+                  #{membership.channel.name}
                 </Link>
               </MenuItem>
             ))}
           </SubMenu>
           <SubMenu label="Solo Messages">
             {dms.map((membership) => (
-              <MenuItem>
+              <MenuItem key={membership.id}>
                 <Link
                   className="nav-link"
                   to={`messages/${membership.channel.id}`}
                 >
-                  {membership.channel.name}
+                  @{membership.channel.name}
                 </Link>
               </MenuItem>
             ))}
