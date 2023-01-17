@@ -35,7 +35,7 @@ function UserButton({ channel }) {
     "http://localhost:8080/members/add/users/" +
     eOption.value +
     "/channels/" +
-    id;
+    channel.id;
 
   const options = {
     url: addMemberURL,
@@ -67,11 +67,11 @@ function UserButton({ channel }) {
 
   useEffect(() => {
     loadMembers();
-  }, [channel]);
+  }, [channel, eOption]);
 
   useEffect(() => {
     loadNotMembers();
-  }, [channel]);
+  }, [channel, eOption]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -86,7 +86,7 @@ function UserButton({ channel }) {
     loadMembers();
     loadNotMembers();
 
-    refreshPage();
+    // refreshPage();
   };
 
   const refreshPage = () => {
@@ -135,7 +135,9 @@ function UserButton({ channel }) {
         </Modal.Body>
         <Modal.Footer>
           <select class="form-select" id="dropdown">
-            <option selected>Select new Member</option>
+            <option selected defaultValue="">
+              Select new Member
+            </option>
             {notMembers.map((notMember) => (
               <option value={notMember.id}>{notMember.userName}</option>
             ))}

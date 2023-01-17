@@ -50,10 +50,21 @@ const Bar = () => {
         <Menu>
           <SubMenu label="Bands">
             <MenuItem>
-              <Link className="nav-link">$Ganstagrass</Link>
+              <Link className="nav-link">
+                <strong>𝄞</strong> The_Algorhythmics
+              </Link>
             </MenuItem>
             <MenuItem>
-              <Link className="nav-link">$JiveTurkeys</Link>
+              <Link className="nav-link">𝄞Foo_Bar_Fighters</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className="nav-link">𝄞Booligans</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className="nav-link">𝄞The_Null_Pointers</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link className="nav-link">𝄞Gangstagrass</Link>
             </MenuItem>
             <MenuItem>
               <Button variant="btn btn-outline-dark">New Band</Button>
@@ -66,7 +77,7 @@ const Bar = () => {
                   className="nav-link"
                   to={`messages/${membership.channel.id}`}
                 >
-                  #{membership.channel.name}
+                  ♫ {membership.channel.name}
                 </Link>
               </MenuItem>
             ))}
@@ -81,7 +92,7 @@ const Bar = () => {
                   className="nav-link"
                   to={`messages/${membership.channel.id}`}
                 >
-                  @{membership.channel.name}
+                  ♪ {membership.channel.name}
                 </Link>
               </MenuItem>
             ))}
