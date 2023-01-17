@@ -169,8 +169,8 @@ export default function Messages() {
       <div className="row">
         <Row>
           <Col>
-            <h2>{channel.name}</h2>
-            <p>{channel.description}</p>
+            <h2 className="m-0 p-1">{channel.name}</h2>
+            <p className="m-0 p-1">{channel.description}</p>
           </Col>
           <Col>
             <div className="float-end m-3">

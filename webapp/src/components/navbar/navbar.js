@@ -27,7 +27,10 @@ export default function navbar() {
           >
             Add User
           </Link> */}
-          <div className="float-start">
+          <div
+            className="float-start"
+            style={{ position: "absolute", left: "110px" }}
+          >
             <ViewUsers />
           </div>
           <Button variant="btn btn-outline-light">Log Out</Button>

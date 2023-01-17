@@ -39,8 +39,15 @@ export default function ViewUsers() {
 
   return (
     <>
-      <Link className="text-light" onClick={handleShow}>
-        $Ganstagrass
+      <Link
+        className="text-light"
+        style={{ textDecoration: "none" }}
+        onClick={handleShow}
+      >
+        <div>
+          <h2 className="m-0">Band: The Algorhythmics</h2>(
+          {Object.keys(users).length} members)
+        </div>
       </Link>
 
       <Modal show={show} onHide={handleClose}>
