@@ -76,7 +76,7 @@ export default function Messages() {
             <Col>
               <div
                 key={message.id}
-                className="col-md-6 offset-md-1 border rounded p-3 mt-2 shadow"
+                className="col-md-6 border rounded p-3 mt-2 shadow bg-white"
                 style={{
                   width: "100%",
                   // height: "70vh",
@@ -84,19 +84,38 @@ export default function Messages() {
                   position: "relative",
                 }}
               >
-                <div
-                  style={{
-                    width: "100%",
-                    // height: "70vh",
-                    float: "right",
-                    position: "relative",
-                  }}
-                >
-                  <strong align="right">{message.message}</strong>
-                  <p className="text-primary" align="right">
-                    me
-                  </p>
-                </div>
+                <Container>
+                  <Row className="float-end">
+                    <Col md="auto">
+                      <div
+                        className="float-end"
+                        style={{
+                          width: "100%",
+                          // height: "70vh",
+                          position: "relative",
+                        }}
+                      >
+                        <p className="text-primary m-0" align="right">
+                          <font size="2">me</font>
+                        </p>
+                        <p className="text-dark text-right m-0">
+                          {message.message}
+                        </p>
+                      </div>
+                    </Col>
+                    <Col md="auto">
+                      <div className="float-end">
+                        <img
+                          src={DefaultImg}
+                          width="60"
+                          height="60"
+                          class="d-inline-block align-top"
+                          alt="default logo"
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
             </Col>
           </Row>
@@ -108,7 +127,7 @@ export default function Messages() {
           <Col>
             <div
               key={message.id}
-              className="col-md-6 offset-md-1 border rounded p-3 mt-2 shadow"
+              className="col-md-6  border rounded p-3 mt-2 shadow bg-white"
               style={{
                 width: "100%",
                 // height: "70vh",
@@ -130,7 +149,7 @@ export default function Messages() {
                     </div>
                   </Col>
                   <Col>
-                    <p className="text-primary">
+                    <p className="text-primary m-0">
                       <font size="2">{message.userEntity.userName}</font>
                     </p>
                     <strong>{message.message}</strong>
@@ -153,17 +172,20 @@ export default function Messages() {
             <h2>{channel.name}</h2>
             <p>{channel.description}</p>
           </Col>
-          <Col align="right">
-            <UserButton channel={channel} />
+          <Col>
+            <div className="float-end m-3">
+              <UserButton channel={channel} />
+            </div>
           </Col>
         </Row>
         <div
-          className="border rounded"
+          className="border rounded bg-dark bg-opacity-10"
           style={{
             overflow: "auto",
             width: "100%",
             height: "70vh",
-            float: "left",
+            // float: "left",
+            right: "8px",
             position: "relative",
             padding: "10px",
           }}

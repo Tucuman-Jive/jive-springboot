@@ -27,7 +27,9 @@ export default function navbar() {
           >
             Add User
           </Link> */}
-          <ViewUsers></ViewUsers>
+          <div className="float-start">
+            <ViewUsers />
+          </div>
           <Button variant="btn btn-outline-light">Log Out</Button>
 
           {/* <button className="btn btn-outline-light">Add User</button> */}
