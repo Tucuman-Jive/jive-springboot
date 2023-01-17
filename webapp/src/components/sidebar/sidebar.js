@@ -42,7 +42,7 @@ const Bar = () => {
   return (
     <div style={{ display: "flex", height: "100%" }}>
       <Sidebar
-        style={{ height: "90vh" }}
+        style={{ height: "90vh", bottom: "0" }}
         rootStyles={{
           backgroundColor: "red",
         }}
@@ -56,7 +56,7 @@ const Bar = () => {
               <Link className="nav-link">$JiveTurkeys</Link>
             </MenuItem>
             <MenuItem>
-              <Button variant="btn btn-outline-dark">Add Band</Button>
+              <Button variant="btn btn-outline-dark">New Band</Button>
             </MenuItem>
           </SubMenu>
           <SubMenu label="Gigs">
@@ -85,6 +85,9 @@ const Bar = () => {
                 </Link>
               </MenuItem>
             ))}
+            <MenuItem>
+              <Button variant="btn btn-outline-dark">New Solo</Button>
+            </MenuItem>
           </SubMenu>
         </Menu>
       </Sidebar>

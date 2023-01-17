@@ -65,7 +65,17 @@ export default function MessageBox({ user, channel }) {
   const renderBox = () => {
     return (
       <form align="center">
-        <div className="input-group">
+        <div
+          className="input-group"
+          style={{
+            padding: "10px",
+            position: "absolute",
+            width: "70%",
+            bottom: "20px",
+            top: "auto",
+            left: "350px",
+          }}
+        >
           <input
             className="form-control"
             type={"text"}
@@ -75,8 +85,8 @@ export default function MessageBox({ user, channel }) {
           ></input>
           <Button
             onClick={handleSubmit}
-            className="btn btn-outline-primary "
-            variant="primary"
+            className="btn btn-outline"
+            variant="dark"
           >
             jive!
           </Button>
