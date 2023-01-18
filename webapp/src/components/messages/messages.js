@@ -7,6 +7,7 @@ import MessageBox from "../messageBox/messagebox";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import moment from "moment";
 import {
   BrowserRouter as Router,
   Link,
@@ -96,11 +97,13 @@ export default function Messages() {
                         }}
                       >
                         <p className="text-primary m-0" align="right">
-                          <font size="2">me</font>
+                          <font size="2">
+                            me | {moment(message.createdAt).format("LT")}
+                          </font>
                         </p>
-                        <p className="text-dark text-right m-0">
+                        <strong className="text-dark text-right m-0">
                           {message.message}
-                        </p>
+                        </strong>
                       </div>
                     </Col>
                     <Col md="auto">
@@ -150,7 +153,10 @@ export default function Messages() {
                   </Col>
                   <Col>
                     <p className="text-primary m-0">
-                      <font size="2">{message.userEntity.userName}</font>
+                      <font size="2">
+                        {message.userEntity.userName} |{" "}
+                        {moment(message.createdAt).format("LT")}
+                      </font>
                     </p>
                     <strong>{message.message}</strong>
                   </Col>
