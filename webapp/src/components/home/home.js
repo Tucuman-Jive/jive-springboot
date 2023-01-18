@@ -54,9 +54,9 @@ export default function home() {
           </p>
         </div>
         <div className="col md-6">
-          <a href="https://jive.co.za/" target="_blank">
-            <img src={Logo}></img>
-          </a>
+          {/* <a href="https://jive.co.za/" target="_blank"> */}
+          <img src={Logo}></img>
+          {/* </a> */}
         </div>
       </div>
     </div>
