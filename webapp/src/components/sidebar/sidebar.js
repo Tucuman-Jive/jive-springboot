@@ -57,15 +57,15 @@ const Bar = () => {
             <MenuItem>
               <Link className="nav-link">𝄞Foo_Bar_Fighters</Link>
             </MenuItem>
-            <MenuItem>
+            {/* <MenuItem>
               <Link className="nav-link">𝄞Booligans</Link>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem>
               <Link className="nav-link">𝄞The_Null_Pointers</Link>
             </MenuItem>
-            <MenuItem>
+            {/* <MenuItem>
               <Link className="nav-link">𝄞Gangstagrass</Link>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem>
               <Button variant="btn btn-outline-dark">New Band</Button>
             </MenuItem>
