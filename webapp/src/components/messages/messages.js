@@ -98,9 +98,9 @@ export default function Messages() {
                         <p className="text-primary m-0" align="right">
                           <font size="2">me</font>
                         </p>
-                        <p className="text-dark text-right m-0">
+                        <strong className="text-dark text-right m-0">
                           {message.message}
-                        </p>
+                        </strong>
                       </div>
                     </Col>
                     <Col md="auto">
