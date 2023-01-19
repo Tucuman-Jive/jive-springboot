@@ -51,20 +51,24 @@ const Bar = () => {
           <SubMenu label="Bands">
             <MenuItem>
               <Link className="nav-link">
-                <strong>𝄞</strong> The_Algorhythmics
+                <font size="5">𝄞</font> The_Algorhythmics
               </Link>
             </MenuItem>
             <MenuItem>
-              <Link className="nav-link">𝄞Foo_Bar_Fighters</Link>
+              <Link className="nav-link">
+                <font size="5">𝄞</font> Foo_Bar_Fighters
+              </Link>
             </MenuItem>
             {/* <MenuItem>
-              <Link className="nav-link">𝄞Booligans</Link>
+              <Link className="nav-link"><font size="5">𝄞</font>Booligans</Link>
             </MenuItem> */}
             <MenuItem>
-              <Link className="nav-link">𝄞The_Null_Pointers</Link>
+              <Link className="nav-link">
+                <font size="5">𝄞</font> The_Null_Pointers
+              </Link>
             </MenuItem>
             {/* <MenuItem>
-              <Link className="nav-link">𝄞Gangstagrass</Link>
+              <Link className="nav-link"><font size="5">𝄞</font>Gangstagrass</Link>
             </MenuItem> */}
             <MenuItem>
               <Button variant="btn btn-outline-dark">New Band</Button>
